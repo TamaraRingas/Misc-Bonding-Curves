@@ -9,3 +9,5 @@
 [submodule "lib/v3-periphery"]
 	path = lib/v3-periphery
 	url = https://github.com/uniswap/v3-periphery
+[submodule "/Users/admin/Desktop/Code/Projects/Misc-DeFi-1/lib/v3-periphery"]
+	branch = 0.8
