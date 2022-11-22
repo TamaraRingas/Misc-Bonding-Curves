@@ -511,63 +511,6 @@
         }
       }
     },
-    "lib/forge-std/src/Test.sol": {
-      "lastModificationDate": 1668433548285,
-      "contentHash": "23c73ad6c59f5d629042303f8ffc1359",
-      "sourceName": "lib/forge-std/src/Test.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/forge-std/lib/ds-test/src/test.sol",
-        "lib/forge-std/src/Common.sol",
-        "lib/forge-std/src/Components.sol",
-        "lib/forge-std/src/StdAssertions.sol",
-        "lib/forge-std/src/StdCheats.sol",
-        "lib/forge-std/src/StdError.sol",
-        "lib/forge-std/src/StdJson.sol",
-        "lib/forge-std/src/StdMath.sol",
-        "lib/forge-std/src/StdStorage.sol",
-        "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src/Vm.sol",
-        "lib/forge-std/src/console.sol",
-        "lib/forge-std/src/console2.sol"
-      ],
-      "versionRequirement": ">=0.6.2, <0.9.0",
-      "artifacts": {
-        "Test": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "Test.sol/Test.json"
-        },
-        "TestBase": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "Test.sol/TestBase.json"
-        }
-      }
-    },
     "lib/forge-std/src/Vm.sol": {
       "lastModificationDate": 1668433548285,
       "contentHash": "af4e1189b1763fe0d73a21d17cc2ea9c",
@@ -746,50 +689,10 @@
         }
       }
     },
-    "src/Counter.sol": {
-      "lastModificationDate": 1668433401009,
-      "contentHash": "ae6c800a2b4c57768024d6e9423d39e8",
-      "sourceName": "src/Counter.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.13",
-      "artifacts": {
-        "Counter": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "Counter.sol/Counter.json"
-        }
-      }
-    },
-    "test/Counter.t.sol": {
-      "lastModificationDate": 1668433401009,
-      "contentHash": "b1a6521ba9c61d5266bab1fc9a057d68",
-      "sourceName": "test/Counter.t.sol",
+    "src/contracts/BondingCurveCos.sol": {
+      "lastModificationDate": 1668523097524,
+      "contentHash": "d1ff159ad547a38c26c71832c7891a37",
+      "sourceName": "src/contracts/BondingCurveCos.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -819,26 +722,294 @@
         }
       },
       "imports": [
-        "lib/forge-std/lib/ds-test/src/test.sol",
-        "lib/forge-std/src/Common.sol",
-        "lib/forge-std/src/Components.sol",
-        "lib/forge-std/src/StdAssertions.sol",
-        "lib/forge-std/src/StdCheats.sol",
-        "lib/forge-std/src/StdError.sol",
-        "lib/forge-std/src/StdJson.sol",
-        "lib/forge-std/src/StdMath.sol",
-        "lib/forge-std/src/StdStorage.sol",
-        "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src/Test.sol",
-        "lib/forge-std/src/Vm.sol",
-        "lib/forge-std/src/console.sol",
-        "lib/forge-std/src/console2.sol",
-        "src/Counter.sol"
+        "src/interfaces/IBondingCurveCos.sol"
       ],
-      "versionRequirement": "^0.8.13",
+      "versionRequirement": "=0.8.17",
       "artifacts": {
-        "CounterTest": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "Counter.t.sol/CounterTest.json"
+        "BondingCurveCos": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "BondingCurveCos.sol/BondingCurveCos.json"
+        }
+      }
+    },
+    "src/contracts/BondingCurveLn.sol": {
+      "lastModificationDate": 1669112793525,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "sourceName": "src/contracts/BondingCurveLn.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
+      "artifacts": {
+        "BondingCurveLn": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "BondingCurveLn.sol/BondingCurveLn.json"
+        }
+      }
+    },
+    "src/contracts/BondingCurvePiecewise.sol": {
+      "lastModificationDate": 1668522786215,
+      "contentHash": "58cc8de199a23d1e1ec44d129203577b",
+      "sourceName": "src/contracts/BondingCurvePiecewise.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "=0.8.17",
+      "artifacts": {
+        "BondingCurvePiecewise": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "BondingCurvePiecewise.sol/BondingCurvePiecewise.json"
+        }
+      }
+    },
+    "src/contracts/MSC.sol": {
+      "lastModificationDate": 1668592700821,
+      "contentHash": "caf0b9ce5f2c2980af5578f6e4406257",
+      "sourceName": "src/contracts/MSC.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/interfaces/IMSC.sol"
+      ],
+      "versionRequirement": "=0.8.17",
+      "artifacts": {
+        "MSC": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "MSC.sol/MSC.json"
+        }
+      }
+    },
+    "src/interfaces/IBondingCurveCos.sol": {
+      "lastModificationDate": 1668523166963,
+      "contentHash": "c587ff94e9c13220c91eb3b29b11c515",
+      "sourceName": "src/interfaces/IBondingCurveCos.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "=0.8.17",
+      "artifacts": {
+        "IBondingCurveCos": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "IBondingCurveCos.sol/IBondingCurveCos.json"
+        }
+      }
+    },
+    "src/interfaces/IBondingCurveLn.sol": {
+      "lastModificationDate": 1669112774162,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "sourceName": "src/interfaces/IBondingCurveLn.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
+      "artifacts": {
+        "IBondingCurveLn": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "IBondingCurveLn.sol/IBondingCurveLn.json"
+        }
+      }
+    },
+    "src/interfaces/IBondingCurvePiecewise.sol": {
+      "lastModificationDate": 1668523195218,
+      "contentHash": "914ddbb7a57f3c1b9c7fa697c6de5a1c",
+      "sourceName": "src/interfaces/IBondingCurvePiecewise.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "=0.8.17",
+      "artifacts": {
+        "IBondingCurvePiecewise": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "IBondingCurvePiecewise.sol/IBondingCurvePiecewise.json"
+        }
+      }
+    },
+    "src/interfaces/IMSC.sol": {
+      "lastModificationDate": 1668522660104,
+      "contentHash": "b80301163ec4506a2962d743228e0185",
+      "sourceName": "src/interfaces/IMSC.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "=0.8.17",
+      "artifacts": {
+        "IMSC": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "IMSC.sol/IMSC.json"
         }
       }
     }
