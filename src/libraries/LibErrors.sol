@@ -24,8 +24,8 @@ library LibErrors {
 
   error TokensNotAvailable();
 
-  error NoMetadex();
-  
-  error MaxOneMillionTokensPerTransaction();
+  error NoMISC();
+
+  error Max500KTokensPerTransaction();
 
 }
