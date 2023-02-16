@@ -33,9 +33,9 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
   bool public transitionConditionsMet; // ToDo: Change to uint8 to save space
   bool public transitioned; // ToDo: Change to uint8 to save space
 
-  address uniswapRouterAddress;
-  address daoAddress;
-  address treasuryAddress;
+  address uniswapRouter;
+  address marketTransition;
+  address treasury;
 
   IERC20 ETH;
   MISC misc;
@@ -83,7 +83,8 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
         address _miscAddress,
         address _nftAddress,
         address _treasuryAddress,
-        address _uniswapRouter
+        address _uniswapRouter,
+        address _marketTransition
     ) {
 
         maxThreshold = 20000000;
@@ -91,9 +92,10 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
         timeoutPeriod = 150 days;
         tokensSold = 0;
 
-        treasuryAddress = _treasuryAddress;
-        uniswapRouterAddress = _uniswapRouter;
-
+        treasury = _treasuryAddress;
+        uniswapRouter = _uniswapRouter;
+        marketTransition = _marketTransition;
+        
         ETH = IERC20(_collateralAddress);
         misc = MISC(_miscAddress);
 
