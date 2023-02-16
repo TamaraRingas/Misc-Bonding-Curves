@@ -28,7 +28,11 @@ contract BondingCurveCos is IBondingCurveCos {
 
   int256 tokensSold;
 
+  bool public curveActive; // ToDo: Change to uint8 to save space
+  bool public transitionConditionsMet; // ToDo: Change to uint8 to save space
+  bool public transitioned; // ToDo: Change to uint8 to save space
+
   constructor() {
-    
+
   }
 }
