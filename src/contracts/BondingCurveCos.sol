@@ -38,6 +38,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
   bool public curveActive; // ToDo: Change to uint8 to save space
   bool public transitionConditionsMet; // ToDo: Change to uint8 to save space
   bool public transitioned; // ToDo: Change to uint8 to save space
+  bool public curveInitialized;
 
   address uniswapRouter;
   address marketTransition;
@@ -48,9 +49,14 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
 
   // =================== MODIFIERS =================== //
 
+  modifier unitialized() {
+    if (curveInitialized == true) revert LibErrors.CurveInitialized(); 
+    _;
+  }
+    
   modifier isActive() {
-      if (curveActive == false) revert LibErrors.CurvePaused();
-      _;
+    if (curveActive == false) revert LibErrors.CurvePaused();
+    _;
   }
 
   //  /// @notice Checks if a user is whitelisted for the current sale round
@@ -119,7 +125,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
 
     // =================== OWNER FUNCTIONS =================== //
 
-    function initializeCurve() external onlyOwner {
+    function initializeCurve() external onlyOwner unitialized() {
         curveActive = true;
         timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
         emit LibEvents.CurveActivated(msg.sender, block.timestamp);
@@ -155,4 +161,14 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     //     );
     //     return fee;
     // }
+
+    // function getMarketTransitionContractAddress()
+    //     public
+    //     view
+    //     returns (address)
+    // {
+    //     return curveFactory.getMarketAddress(address(this));
+    // }
+
+    
 }
