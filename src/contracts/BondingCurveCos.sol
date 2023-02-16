@@ -18,4 +18,17 @@ import "@prb-math/sd59x18/Math.sol";
 
 contract BondingCurveCos is IBondingCurveCos {
   //using  for int256;
+
+  // =================== VARIABLES =================== //
+
+  int256 immutable maxThreshold;
+  int256 immutable minThreshold;
+  uint256 immutable timeoutPeriod;
+  uint256 timeoutPeriodExpiry;
+
+  int256 tokensSold;
+
+  constructor() {
+    
+  }
 }
