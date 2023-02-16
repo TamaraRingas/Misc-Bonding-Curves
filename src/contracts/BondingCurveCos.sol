@@ -11,11 +11,14 @@ pragma solidity 0.8.17;
 
 import "./MISC.sol";
 import "../libraries/LibErrors.sol";
+import "../libraries/LibEvents.sol";
+import "@prb-math/sd59x18/Math.sol";
 import "../interfaces/IBondingCurveCos.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@prb-math/sd59x18/Math.sol";  
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+ 
 
 contract BondingCurveCos is IBondingCurveCos, Ownable {
   //using  for int256;
@@ -87,15 +90,16 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
         address _marketTransition
     ) {
 
-        maxThreshold = 20000000;
-        minThreshold = 5000000;
-        timeoutPeriod = 150 days;
+        maxThreshold = 20000000; // ToDo set this in initialize function
+        minThreshold = 5000000; // ToDo set this in initialize function
+        timeoutPeriod = 150 days;// ToDo set this in initialize function
+
         tokensSold = 0;
 
         treasury = _treasuryAddress;
         uniswapRouter = _uniswapRouter;
         marketTransition = _marketTransition;
-        
+
         ETH = IERC20(_collateralAddress);
         misc = MISC(_miscAddress);
 
@@ -120,24 +124,24 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     }
     
     function pauseCurve() external {
-        marketTransitionContractAddress = curveFactory.getMarketAddress(
+        marketTransition = curveFactory.getMarketAddress(
             address(this)
         );
         require(
-            msg.sender == marketTransitionContractAddress ||
-                msg.sender == owner(),
+            msg.sender == marketTransition ||
+            msg.sender == owner(),
             "Access Denied"
         );
 
         curveActive = false;
 
-        emit CurvePaused(msg.sender, block.timestamp);
+        emit LibEvents.CurvePaused(msg.sender, block.timestamp);
     }
     
     function activateCurve() external onlyOwner {
         curveActive = true;
         timeoutPeriodExpiry = startTime + timeoutPeriod;
-        emit CurveActivated(msg.sender, block.timestamp);
+        emit LibEvents.CurveActivated(msg.sender, block.timestamp);
     }
 
     // =================== VIEW FUNCTIONS =================== //
