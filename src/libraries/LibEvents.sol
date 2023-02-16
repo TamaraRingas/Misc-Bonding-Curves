@@ -15,8 +15,6 @@ library LibEvents {
 
     event CurveActivated(address pauser, uint256 time);
 
-    event CollateralWithdrawn(address drawer, uint256 time);
-
     event MISCBought(int256 amountBought, address Buyer, uint256 timestamp);
 
     event MISCSold(int256 amountSold, address Seller, uint256 timestamp);
