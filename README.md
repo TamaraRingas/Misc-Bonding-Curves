@@ -1,4 +1,4 @@
-# Misc DeFi Smart Contracts
+# Misc Bonding Curve Smart Contracts
 
 ## Get Started  
 
