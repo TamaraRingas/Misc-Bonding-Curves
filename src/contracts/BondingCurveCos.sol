@@ -24,7 +24,7 @@ contract BondingCurveCos is IBondingCurveCos {
   int256 immutable maxThreshold;
   int256 immutable minThreshold;
   int256 tokensSold;
-  
+
   uint256 immutable timeoutPeriod;
   uint256 timeoutPeriodExpiry;
 
@@ -33,6 +33,18 @@ contract BondingCurveCos is IBondingCurveCos {
   bool public transitioned; // ToDo: Change to uint8 to save space
 
   address uniswapRouterAddress;
+  address daoAddress;
+  address treasuryAddress;
+
+  IERC20 ETH;
+  MISC misc;
+
+  // =================== MODIFIERS =================== //
+
+  modifier isActive() {
+      if (curveActive == false) revert LibErrors.Paused();
+      _;
+  }
 
   constructor() {
 
