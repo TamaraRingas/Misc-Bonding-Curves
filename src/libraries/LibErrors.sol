@@ -12,4 +12,20 @@ library LibErrors {
 
   error CurvePaused();
 
+  error IncorrectInput();
+
+  error NoZeroWithdrawals();
+
+  error InsufficientFunds();
+
+  error CannotBuyZero();
+
+  error CannotSellZero();
+
+  error TokensNotAvailable();
+
+  error NoMetadex();
+  
+  error MaxOneMillionTokensPerTransaction();
+
 }
