@@ -12,5 +12,5 @@ pragma solidity 0.8.17;
 import "../interfaces/IMarketTransition.sol";
  
 contract MarketTransition is IMarketTransition {
-
+  
 }
