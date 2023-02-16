@@ -9,7 +9,7 @@ pragma solidity 0.8.17;
 \____/  \___/ \/ \_/    \_/   \__/  
 */
 
-import "../interfaces/ICurve.sol";
+import "../interfaces/ICurve.sol"; 
 
 contract Curve is ICurve {
 
