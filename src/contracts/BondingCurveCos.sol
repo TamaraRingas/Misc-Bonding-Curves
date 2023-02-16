@@ -8,9 +8,9 @@ import "../interfaces/IBondingCurveCos.sol";
  / __| / _ \ / __|   / /   | | | || '__|\ \ / / / _ \
 | (__ | (_) |\__ \  / /___ | |_| || |    \ V / |  __/
  \___| \___/ |___/  \____/  \__,_||_|     \_/   \___|
-            
+
 */
 
-contract BondingCurveCos {
+contract BondingCurveCos is IBondingCurveCos {
 
 }
