@@ -9,6 +9,10 @@ pragma solidity 0.8.17;
 */
 
 import "../interfaces/ICurveFactory.sol"; 
+import "../interfaces/IUniswapRouter.sol";
+//import "./MockERC1155.sol";
+import "./Curve.sol";
+import "./MarketTransition.sol";
 
 contract CurveFactory is ICurveFactory {
   
