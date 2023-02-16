@@ -10,6 +10,8 @@ pragma solidity 0.8.17;
 */
 
 import "./MISC.sol";
+import "./UniswapRouter.sol";
+import "./MarketTransition.sol";
 import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
@@ -99,13 +101,12 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
         treasury = _treasuryAddress;
         uniswapRouter = _uniswapRouter;
         marketTransition = _marketTransition;
+        //getPriceContract = IGetPrice(_getPrice);
 
         ETH = IERC20(_collateralAddress);
         misc = MISC(_miscAddress);
 
         //NFT = IERC1155(_nftAddress);
-
-        //getPriceContract = IGetPrice(_getPrice);
 
         curveActive = false; // ToDo switch to uint8
         transitionConditionsMet = false; // ToDo switch to uint8
@@ -120,7 +121,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     function initializeCurve() external onlyOwner {
         curveActive = true;
         timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
-        emit CurveActivated(msg.sender, block.timestamp);
+        emit LibEvents.CurveActivated(msg.sender, block.timestamp);
     }
     
     function pauseCurve() external {
@@ -146,11 +147,11 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
 
     // =================== VIEW FUNCTIONS =================== //
 
-    function getFee(int256 _price) public pure returns (int256) {
-        int256 fee = PRBMathSD59x18.mul(
-            PRBMathSD59x18.div(5 * 1e18, 100e18),
-            _price
-        );
-        return fee;
-    }
+    // function getFee(int256 _price) public pure returns (int256) {
+    //     int256 fee = PRBMathSD59x18.mul(
+    //         PRBMathSD59x18.div(5 * 1e18, 100e18),
+    //         _price
+    //     );
+    //     return fee;
+    // }
 }
