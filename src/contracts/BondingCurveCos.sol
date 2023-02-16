@@ -135,4 +135,14 @@ contract BondingCurveCos is IBondingCurveCos {
         timeoutPeriodExpiry = startTime + timeoutPeriod;
         emit CurveActivated(msg.sender, block.timestamp);
     }
+
+     // =================== VIEW FUNCTIONS =================== //
+
+    function getFee(int256 _price) public pure returns (int256) {
+        int256 fee = PRBMathSD59x18.mul(
+            PRBMathSD59x18.div(5 * 1e18, 100e18),
+            _price
+        );
+        return fee;
+    }
 }
