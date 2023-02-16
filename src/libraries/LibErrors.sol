@@ -6,15 +6,13 @@ pragma solidity 0.8.17;
  |  _| | |_) | |_) | | | | |_) \___ \ 
  | |___|  _ <|  _ <| |_| |  _ < ___) |
  |_____|_| \_\_| \_\\___/|_| \_\____/
-*/
+***********************************/
 
 library LibErrors {
 
   error CurvePaused();
 
   error IncorrectInput();
-
-  error NoZeroWithdrawals();
 
   error InsufficientFunds();
 
