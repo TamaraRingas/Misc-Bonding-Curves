@@ -170,5 +170,13 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     //     return curveFactory.getMarketAddress(address(this));
     // }
 
-    
+    // =================== GENERAL FUNCTIONS =================== //
+
+    function buyMISC(uint256 amount) external isActive {
+
+    }
+
+    function sellMISC(uint256 amount) external isActive {
+
+    }
 }
