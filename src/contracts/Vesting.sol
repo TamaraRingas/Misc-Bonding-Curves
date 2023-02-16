@@ -39,12 +39,17 @@ contract TokenVesting is Ownable, ReentrancyGuard {
         // whether or not the vesting has been revoked
         bool revoked;
     }
+    
     // address of the ERC20 token
     IERC20 private immutable _token;
+
     bytes32[] private vestingSchedulesIds;
+
     mapping(bytes32 => VestingSchedule) private vestingSchedules;
-    uint256 private vestingSchedulesTotalAmount;
     mapping(address => uint256) private holdersVestingCount;
+
+    uint256 private vestingSchedulesTotalAmount;
+
     event Released(uint256 amount);
     event Revoked();
     /**
