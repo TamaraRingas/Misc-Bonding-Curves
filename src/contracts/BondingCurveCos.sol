@@ -76,7 +76,36 @@ contract BondingCurveCos is IBondingCurveCos {
   //       }
   //   }
 
-  constructor() {
+   // =================== CONSTRUCTOR =================== //
 
-  }
+    constructor(
+        address _collateralAddress,
+        address _miscAddress,
+        address _nftAddress,
+        address _treasuryAddress,
+        address _uniswapRouter
+    ) {
+
+        maxThreshold = 20000000;
+        minThreshold = 5000000;
+        timeoutPeriod = 150 days;
+        tokensSold = 0;
+
+        treasuryAddress = _treasuryAddress;
+        uniswapRouterAddress = _uniswapRouter;
+
+        ETH = IERC20(_collateralAddress);
+        misc = MISC(_miscAddress);
+
+        //NFT = IERC1155(_nftAddress);
+
+        //getPriceContract = IGetPrice(_getPrice);
+
+        curveActive = false; //
+        transitionConditionsMet = false;
+        transitioned = false;
+
+        //nftStage = NFTStage(true, false, false, false);
+        //currentNFTStage = "Black";
+    }
 }
