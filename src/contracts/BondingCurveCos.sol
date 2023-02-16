@@ -10,6 +10,7 @@ pragma solidity 0.8.17;
 */
 
 import "../interfaces/IBondingCurveCos.sol";
+import "./MISC.sol";
 
 contract BondingCurveCos is IBondingCurveCos {
 
