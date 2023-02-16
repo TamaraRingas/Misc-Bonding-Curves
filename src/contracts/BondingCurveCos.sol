@@ -31,6 +31,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
   int256 immutable minThreshold;
   int256 tokensSold;
 
+  uint256 startTime;
   uint256 immutable timeoutPeriod;
   uint256 timeoutPeriodExpiry;
 
