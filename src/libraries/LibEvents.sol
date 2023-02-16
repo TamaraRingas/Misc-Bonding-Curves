@@ -19,5 +19,12 @@ library LibEvents {
 
     event MISCSold(int256 amountSold, address Seller, uint256 timestamp);
 
-    //event NFTStageSet(string currentNFTStage, uint256 time);
+    event CurveInstanceCreated(uint256 curveId, address curveAddress);
+
+    event MarketInstanceCreated(
+        uint256 marketInstance,
+        address newMarketAddress
+    );
+
+    event NFTStageSet(string currentNFTStage, uint256 time);
 }

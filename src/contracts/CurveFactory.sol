@@ -23,4 +23,19 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract CurveFactory is ICurveFactory {
   
+  // =================== VARIABLES =================== //
+
+    IUniswapRouter2 router;
+    uint256 public curveInstance = 1;
+    uint256 public marketInstance = 1;
+
+    NFT nft = new NFT();
+
+    mapping(uint256 => address) public curveIdToAddress;
+    mapping(address => address) public curveToMarketTransition;
+
+    constructor(address _routerAddress) {
+        router = IUniswapRouter2(_routerAddress);
+    }
+    
 }
