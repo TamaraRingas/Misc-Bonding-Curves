@@ -23,14 +23,16 @@ contract BondingCurveCos is IBondingCurveCos {
 
   int256 immutable maxThreshold;
   int256 immutable minThreshold;
+  int256 tokensSold;
+  
   uint256 immutable timeoutPeriod;
   uint256 timeoutPeriodExpiry;
-
-  int256 tokensSold;
 
   bool public curveActive; // ToDo: Change to uint8 to save space
   bool public transitionConditionsMet; // ToDo: Change to uint8 to save space
   bool public transitioned; // ToDo: Change to uint8 to save space
+
+  address uniswapRouterAddress;
 
   constructor() {
 
