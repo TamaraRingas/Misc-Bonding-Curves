@@ -39,7 +39,7 @@ contract TokenVesting is Ownable, ReentrancyGuard {
         // whether or not the vesting has been revoked
         bool revoked;
     }
-    
+
     // address of the ERC20 token
     IERC20 private immutable _token;
 
@@ -228,7 +228,7 @@ contract TokenVesting is Ownable, ReentrancyGuard {
             this.getWithdrawableAmount() >= amount,
             "TokenVesting: not enough withdrawable funds"
         );
-        _token.safeTransfer(owner(), amount);
+        _token.transfer(owner(), amount);
     }
 
     /**
@@ -260,7 +260,7 @@ contract TokenVesting is Ownable, ReentrancyGuard {
             vestingSchedule.beneficiary
         );
         vestingSchedulesTotalAmount = vestingSchedulesTotalAmount.sub(amount);
-        _token.safeTransfer(beneficiaryPayable, amount);
+        _token.transfer(beneficiaryPayable, amount);
     }
 
     /**
