@@ -7,7 +7,7 @@ pragma solidity 0.8.17;
  /_\   / \//  / /     | || ||___ \ |___ \ 
 //__  / _  \ / /___   | || | ___) | ___) |
 \__/  \/ \_/ \____/   |_||_||____/ |____/                                      
-*/
+***************************************/
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "../interfaces/IMockERC1155.sol";
