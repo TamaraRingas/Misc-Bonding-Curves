@@ -17,7 +17,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@prb-math/sd59x18/Math.sol";  
 
-contract BondingCurveCos is IBondingCurveCos {
+contract BondingCurveCos is IBondingCurveCos, Ownable {
   //using  for int256;
 
   // =================== VARIABLES =================== //
@@ -109,6 +109,14 @@ contract BondingCurveCos is IBondingCurveCos {
         //currentNFTStage = "Black";
     }
 
+    // =================== OWNER FUNCTIONS =================== //
+
+    function initializeCurve() external onlyOwner {
+        curveActive = true;
+        timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
+        emit CurveActivated(msg.sender, block.timestamp);
+    }
+    
     function pauseCurve() external {
         marketTransitionContractAddress = curveFactory.getMarketAddress(
             address(this)
@@ -123,12 +131,6 @@ contract BondingCurveCos is IBondingCurveCos {
 
         emit CurvePaused(msg.sender, block.timestamp);
     }
-
-    function initializeCurve() external onlyOwner {
-        curveActive = true;
-        timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
-        emit CurveActivated(msg.sender, block.timestamp);
-    }
     
     function activateCurve() external onlyOwner {
         curveActive = true;
@@ -136,7 +138,7 @@ contract BondingCurveCos is IBondingCurveCos {
         emit CurveActivated(msg.sender, block.timestamp);
     }
 
-     // =================== VIEW FUNCTIONS =================== //
+    // =================== VIEW FUNCTIONS =================== //
 
     function getFee(int256 _price) public pure returns (int256) {
         int256 fee = PRBMathSD59x18.mul(
