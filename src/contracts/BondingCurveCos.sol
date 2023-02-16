@@ -9,8 +9,9 @@ pragma solidity 0.8.17;
 
 */
 
-import "../interfaces/IBondingCurveCos.sol";
 import "./MISC.sol";
+import "../libraries/LibErrors.sol";
+import "../interfaces/IBondingCurveCos.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -42,7 +43,7 @@ contract BondingCurveCos is IBondingCurveCos {
   // =================== MODIFIERS =================== //
 
   modifier isActive() {
-      if (curveActive == false) revert LibErrors.Paused();
+      if (curveActive == false) revert LibErrors.CurvePaused();
       _;
   }
 
