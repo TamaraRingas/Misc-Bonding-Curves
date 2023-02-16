@@ -11,6 +11,10 @@ pragma solidity 0.8.17;
 
 import "../interfaces/IBondingCurveCos.sol";
 import "./MISC.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+//import "@prb-math/PRBMathSD59x18.sol";
 
 contract BondingCurveCos is IBondingCurveCos {
 
