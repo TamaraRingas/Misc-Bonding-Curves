@@ -8,6 +8,8 @@ pragma solidity 0.8.17;
 \/     \_/ \_/\____/  \/    \___/  \/ \_/  \_/ 
 */
 
-contract CurveFactory {
+import "../interfaces/ICurveFactory.sol";
+
+contract CurveFactory is ICurveFactory {
   
 }
