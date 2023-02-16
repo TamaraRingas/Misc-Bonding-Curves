@@ -108,4 +108,25 @@ contract BondingCurveCos is IBondingCurveCos {
         //nftStage = NFTStage(true, false, false, false);
         //currentNFTStage = "Black";
     }
+
+    function pauseCurve() external {
+        marketTransitionContractAddress = curveFactory.getMarketAddress(
+            address(this)
+        );
+        require(
+            msg.sender == marketTransitionContractAddress ||
+                msg.sender == owner(),
+            "Access Denied"
+        );
+
+        curveActive = false;
+
+        emit CurvePaused(msg.sender, block.timestamp);
+    }
+
+    function activateCurve() external onlyOwner {
+        curveActive = true;
+        timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
+        emit CurveActivated(msg.sender, block.timestamp);
+    }
 }
