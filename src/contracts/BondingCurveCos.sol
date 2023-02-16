@@ -101,9 +101,9 @@ contract BondingCurveCos is IBondingCurveCos {
 
         //getPriceContract = IGetPrice(_getPrice);
 
-        curveActive = false; //
-        transitionConditionsMet = false;
-        transitioned = false;
+        curveActive = false; // ToDo switch to uint8
+        transitionConditionsMet = false; // ToDo switch to uint8
+        transitioned = false; // ToDo switch to uint8
 
         //nftStage = NFTStage(true, false, false, false);
         //currentNFTStage = "Black";
