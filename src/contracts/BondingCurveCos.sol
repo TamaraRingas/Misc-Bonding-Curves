@@ -124,9 +124,15 @@ contract BondingCurveCos is IBondingCurveCos {
         emit CurvePaused(msg.sender, block.timestamp);
     }
 
-    function activateCurve() external onlyOwner {
+    function initializeCurve() external onlyOwner {
         curveActive = true;
         timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
+        emit CurveActivated(msg.sender, block.timestamp);
+    }
+    
+    function activateCurve() external onlyOwner {
+        curveActive = true;
+        timeoutPeriodExpiry = startTime + timeoutPeriod;
         emit CurveActivated(msg.sender, block.timestamp);
     }
 }
