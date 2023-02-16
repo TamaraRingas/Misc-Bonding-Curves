@@ -14,7 +14,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 |_| |_| |_||___/ \___|   \/     \___/ |_|\_\ \___||_| |_|
 */
 
-contract MockMETADEX is
+contract MISC is
     ERC20,
     ERC20Burnable,
     ERC20Capped,
