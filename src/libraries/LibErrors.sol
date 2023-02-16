@@ -10,6 +10,8 @@ pragma solidity 0.8.17;
 
 library LibErrors {
 
+  error CurveInitialized();
+  
   error CurvePaused();
 
   error IncorrectInput();
