@@ -9,6 +9,8 @@ pragma solidity 0.8.17;
 ********************************************/
 
 import "./MISC.sol";
+import "./Curve.sol"; 
+import "./MockERC1155.sol"; 
 import "./UniswapRouter.sol";
 import "./MarketTransition.sol"; 
 import "../libraries/LibErrors.sol";
@@ -16,9 +18,6 @@ import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
 import "../interfaces/ICurveFactory.sol"; 
 import "../interfaces/IUniswapRouter.sol"; 
-import "./MockERC1155.sol"; 
-import "./Curve.sol"; 
-import "./MarketTransition.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
