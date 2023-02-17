@@ -45,4 +45,48 @@ contract Curve is ICurve {
 
   IERC20 COLL;
   MISC misc;
+
+  // =================== MODIFIERS =================== //
+
+  modifier unitialized() {
+    if (curveInitialized == true) revert LibErrors.CurveInitialized(); 
+    _;
+  }
+    
+  modifier isActive() {
+    if (curveActive == false) revert LibErrors.CurvePaused();
+    _;
+  }
+
+   /// @notice Checks if a user is whitelisted for the current sale round
+    /// @dev Gets the currentNFTStage and checks if the user has a balance of the correcponding NFT in their wallet
+    modifier isEligible() {
+        if (nftAccess) {
+            if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Black"))) {
+            require(NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0, "NFTRequired");
+            _;
+        }
+        if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Gold"))) {
+            require(
+                NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
+                    NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0,
+                "NFTRequired"
+            );
+            _;
+        }
+        if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Silver"))) {
+            require(
+                NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
+                    NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0 ||
+                    NFT.balanceOf(msg.sender, SILVER_NFT_ID) > 0,
+                "NFTRequired"
+            );
+            _;
+        }
+        if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("None"))) {
+            _;
+        }
+      }
+      _;
+    }
 }
