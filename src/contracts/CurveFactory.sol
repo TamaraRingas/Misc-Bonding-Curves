@@ -37,5 +37,16 @@ contract CurveFactory is ICurveFactory {
     constructor(address _routerAddress) {
         router = IUniswapRouter2(_routerAddress);
     }
-    
+
+    function getCurveAddress(uint256 _curveId) external view returns (address) {
+        return curveIdToAddress[_curveId];
+    }
+
+    function getMarketAddress(address _curveAddress)
+        external
+        view
+        returns (address)
+    {
+        return curveToMarketTransition[_curveAddress];
+    }
 }
