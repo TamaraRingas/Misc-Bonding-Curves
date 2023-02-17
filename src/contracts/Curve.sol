@@ -128,4 +128,37 @@ contract Curve is ICurve {
         //nftStage = NFTStage(true, false, false, false);
         //currentNFTStage = "Black";
     }
+
+    // =================== OWNER FUNCTIONS =================== //
+
+    function initializeCurve() external onlyOwner unitialized() {
+  
+        startTime = block.timestamp;
+        timeoutPeriodExpiry = startTime + timeoutPeriod;
+        activateCurve();
+
+        emit LibEvents.CurveInitialized(timeoutPeriodExpiry, startTime);
+    }
+    
+    function pauseCurve() external {
+        marketTransition = curveFactory.getMarketAddress(
+            address(this)
+        );
+        require(
+            msg.sender == marketTransition ||
+            msg.sender == owner(),
+            "Access Denied"
+        );
+
+        curveActive = false;
+
+        emit LibEvents.CurvePaused(block.timestamp);
+    }
+    
+    function activateCurve() public onlyOwner {
+        curveActive = true;
+        emit LibEvents.CurveActivated(block.timestamp);
+    }
+
+    
 }

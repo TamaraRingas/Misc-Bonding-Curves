@@ -133,20 +133,20 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
         emit LibEvents.CurveActivated(msg.sender, block.timestamp);
     }
     
-    // function pauseCurve() external {
-    //     marketTransition = curveFactory.getMarketAddress(
-    //         address(this)
-    //     );
-    //     require(
-    //         msg.sender == marketTransition ||
-    //         msg.sender == owner(),
-    //         "Access Denied"
-    //     );
+    function pauseCurve() external {
+        marketTransition = curveFactory.getMarketAddress(
+            address(this)
+        );
+        require(
+            msg.sender == marketTransition ||
+            msg.sender == owner(),
+            "Access Denied"
+        );
 
-    //     curveActive = false;
+        curveActive = false;
 
-    //     emit LibEvents.CurvePaused(msg.sender, block.timestamp);
-    // }
+        emit LibEvents.CurvePaused(msg.sender, block.timestamp);
+    }
     
     function activateCurve() public onlyOwner {
         curveActive = true;
