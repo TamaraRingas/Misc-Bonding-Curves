@@ -27,6 +27,7 @@ contract Curve is ICurve {
   int256 immutable maxThreshold;
   int256 immutable minThreshold;
   int256 tokensSold;
+  int256 treasuryFee;
 
   uint256 startTime;
   uint256 immutable timeoutPeriod;
