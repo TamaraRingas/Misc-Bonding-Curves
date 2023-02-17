@@ -38,7 +38,7 @@ contract Curve is ICurve {
   bool public transitionConditionsMet; // ToDo: Change to uint8 
   bool public transitioned; // ToDo: Change to uint8 
   bool public curveInitialized;
-  bool public nftAccess;
+  bool public nftAccessSet;
 
   address uniswapRouter;
   address marketTransition;
@@ -63,7 +63,7 @@ contract Curve is ICurve {
   /// @notice Checks if a user is whitelisted for the current sale round
   /// @dev Gets the currentNFTStage and checks if the user has a balance of the correcponding NFT in their wallet
   modifier isEligible() {
-      if (nftAccess) {
+      if (nftAccessSet) {
           if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Black"))) {
           require(NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0, "NFTRequired");
           _;
