@@ -23,8 +23,13 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
 
   address curve;
 
+  // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
       curve = _curveAddress;
+  }
+
+  function calculatePrice(uint256 _amountMISC, uint8 _tokenDecimals) external {
+
   }
 
     
