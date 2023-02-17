@@ -9,8 +9,8 @@ pragma solidity 0.8.17;
 \__/  \/ \_/ \____/   |_||_||____/ |____/                                      
 ***************************************/
 
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "../interfaces/IMockERC1155.sol";
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
 contract NFT is ERC1155, IMockERC1155 {
 
