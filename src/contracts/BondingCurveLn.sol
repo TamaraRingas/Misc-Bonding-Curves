@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "../interfaces/IBondingCurveLn.sol";
-
 /*
  _             ___                           
 | | _ __      / __\ _   _  _ __ __   __  ___ 
@@ -11,7 +9,16 @@ import "../interfaces/IBondingCurveLn.sol";
 |_||_| |_|  \____/  \__,_||_|     \_/   \___|
 */
 
-contract BondingCurveLn {
+import "./MISC.sol";
+import "../interfaces/ICurve.sol"; 
+import "../libraries/LibErrors.sol";
+import "../libraries/LibEvents.sol";
+import "@prb-math/sd59x18/Math.sol";
+import "../interfaces/IBondingCurveLn.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+contract BondingCurveLn is IBondingCurveLn, Ownable {
   
   address curve;
 
