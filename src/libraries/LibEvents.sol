@@ -11,9 +11,11 @@ pragma solidity 0.8.17;
 
 library LibEvents {
 
-    event CurvePaused(address pauser, uint256 time);
+    event CurveInitialized(uint256 timeout, uint256 startTime);
 
-    event CurveActivated(address pauser, uint256 time);
+    event CurveActivated(uint256 time);
+    
+    event CurvePaused(uint256 time);
 
     event MISCBought(int256 amountBought, address Buyer, uint256 timestamp);
 
