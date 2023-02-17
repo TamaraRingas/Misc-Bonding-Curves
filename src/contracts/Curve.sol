@@ -160,5 +160,31 @@ contract Curve is ICurve {
         emit LibEvents.CurveActivated(block.timestamp);
     }
 
-    
+    // =================== VIEW FUNCTIONS =================== //
+
+    // function getFee(int256 _price) public pure returns (int256) {
+    //     int256 fee = PRBMathSD59x18.mul(
+    //         PRBMathSD59x18.div(5 * 1e18, 100e18),
+    //         _price
+    //     );
+    //     return fee;
+    // }
+
+    // function getMarketTransitionContractAddress()
+    //     public
+    //     view
+    //     returns (address)
+    // {
+    //     return curveFactory.getMarketAddress(address(this));
+    // }
+
+    // =================== GENERAL FUNCTIONS =================== //
+
+    function buyMISC(uint256 amount) external isActive {
+
+    }
+
+    function sellMISC(uint256 amount) external isActive {
+
+    }
 }
