@@ -16,6 +16,7 @@ import "../interfaces/ICurve.sol";
 import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
+import "../interfaces/IMockERC1155.sol";
 import "../interfaces/IBondingCurveCos.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -45,6 +46,7 @@ contract Curve is ICurve {
 
   IERC20 COLL;
   MISC misc;
+  NFT nft;
 
   // =================== MODIFIERS =================== //
 
@@ -90,5 +92,40 @@ contract Curve is ICurve {
     _;
   }
 
-  
+  // =================== CONSTRUCTOR =================== //
+
+  constructor(
+        address _collateralAddress,
+        address _miscAddress,
+        address _nftAddress,
+        address _treasuryAddress,
+        address _uniswapRouter,
+        address _marketTransition,
+        address _priceCurve
+    ) {
+
+        maxThreshold = 20000000; // ToDo set this in initialize function
+        minThreshold = 5000000; // ToDo set this in initialize function
+        timeoutPeriod = 150 days;// ToDo set this in initialize function
+
+        tokensSold = 0;
+
+        treasury = _treasuryAddress;
+        uniswapRouter = _uniswapRouter;
+        marketTransition = _marketTransition;
+
+        //price = IPriceCurve(_getCurve); // ToDo this must be set based on formula choice as constructor input
+
+        COLL = IERC20(_collateralAddress);
+        misc = MISC(_miscAddress);
+
+        NFT = IERC1155(_nftAddress);
+
+        curveActive = false; // ToDo switch to uint8
+        transitionConditionsMet = false; // ToDo switch to uint8
+        transitioned = false; // ToDo switch to uint8
+
+        //nftStage = NFTStage(true, false, false, false);
+        //currentNFTStage = "Black";
+    }
 }
