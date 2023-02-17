@@ -170,6 +170,10 @@ contract Curve is ICurve {
     //     return fee;
     // }
 
+    function getTokensSold() external view returns (uint256 tokensSold) {
+      return tokensSold;
+    }
+
     function getMarketTransitionAddress() public view
         returns (address)
     {
