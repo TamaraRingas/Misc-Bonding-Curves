@@ -131,11 +131,13 @@ contract Curve is ICurve {
 
     // =================== OWNER FUNCTIONS =================== //
 
-    function initializeCurve() external onlyOwner unitialized() {
-  
+    function initializeCurve(bool _nftAccessSet) external onlyOwner unitialized {
         startTime = block.timestamp;
         timeoutPeriodExpiry = startTime + timeoutPeriod;
+        
         activateCurve();
+
+        nftAccessSet = _nftAccessSet;
 
         emit LibEvents.CurveInitialized(timeoutPeriodExpiry, startTime);
     }
