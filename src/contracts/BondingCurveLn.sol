@@ -36,6 +36,19 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
             external 
             view 
             returns(int256 price) {
+              
+    require(_amountMISC > 0, "Please enter an amount of tokens");
 
+      int256 tokensSold = ICurve(curve).getTokensSold();
+
+      int256 startPoint = tokensSold;
+      startPoint *= 1e18; // Scale, for fixed point math to work
+
+      int256 endPoint = tokensSold + _amountMISC;
+      endPoint *= 1e18; // Scale, for fixed point math to work
+
+      int256 top; // Integral of x = endPoint 
+      int256 bottom; // Integral at x = startPoint 
+      
   }
 }
