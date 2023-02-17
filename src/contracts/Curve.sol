@@ -170,21 +170,19 @@ contract Curve is ICurve {
     //     return fee;
     // }
 
-    // function getMarketTransitionContractAddress()
-    //     public
-    //     view
-    //     returns (address)
-    // {
-    //     return curveFactory.getMarketAddress(address(this));
-    // }
+    function getMarketTransitionAddress() public view
+        returns (address)
+    {
+        return curveFactory.getMarketAddress(address(this));
+    }
 
     // =================== GENERAL FUNCTIONS =================== //
 
-    function buyMISC(uint256 amount) external isActive {
+    function buyMISC(uint256 amount) external isEligible isActive {
 
     }
 
-    function sellMISC(uint256 amount) external isActive {
+    function sellMISC(uint256 amount) external isEligible isActive {
 
     }
 }
