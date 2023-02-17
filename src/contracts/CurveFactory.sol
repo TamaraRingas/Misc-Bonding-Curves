@@ -29,9 +29,14 @@ contract CurveFactory is ICurveFactory {
     uint256 public curveInstance = 1;
     uint256 public marketInstance = 1;
 
-    NFT nft = new NFT();
+    // Where:
+    /// 0 = Ln
+    /// 1 = Cos
+    /// 2 = PieceWise
+    mapping(uint8 => address) public formulaToContract;
 
     mapping(uint256 => address) public curveIdToAddress;
+
     mapping(address => address) public curveToMarketTransition;
 
     constructor(address _routerAddress) {
