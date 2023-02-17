@@ -18,7 +18,6 @@ import "../interfaces/IBondingCurveCos.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-
  
 
 contract BondingCurveCos is IBondingCurveCos, Ownable {
@@ -35,15 +34,16 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
   uint256 timeoutPeriodExpiry;
 
   bool public curveActive; // ToDo: Change to uint8 to save space
-  bool public transitionConditionsMet; // ToDo: Change to uint8 to save space
-  bool public transitioned; // ToDo: Change to uint8 to save space
+  bool public transitionConditionsMet; // ToDo: Change to uint8 
+  bool public transitioned; // ToDo: Change to uint8 
   bool public curveInitialized;
+  bool public nftAccess;
 
   address uniswapRouter;
   address marketTransition;
   address treasury;
 
-  IERC20 ETH;
+  IERC20 COLL;
   MISC misc;
 
   // =================== MODIFIERS =================== //
@@ -58,34 +58,37 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     _;
   }
 
-  //  /// @notice Checks if a user is whitelisted for the current sale round
-  //   /// @dev Gets the currentNFTStage and checks if the user has a balance of the correcponding NFT in their wallet
-  //   modifier isEligible() {
-  //       if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Black"))) {
-  //           require(NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0, "NFTRequired");
-  //           _;
-  //       }
-  //       if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Gold"))) {
-  //           require(
-  //               NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
-  //                   NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0,
-  //               "NFTRequired"
-  //           );
-  //           _;
-  //       }
-  //       if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Silver"))) {
-  //           require(
-  //               NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
-  //                   NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0 ||
-  //                   NFT.balanceOf(msg.sender, SILVER_NFT_ID) > 0,
-  //               "NFTRequired"
-  //           );
-  //           _;
-  //       }
-  //       if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("None"))) {
-  //           _;
-  //       }
-  //   }
+   /// @notice Checks if a user is whitelisted for the current sale round
+    /// @dev Gets the currentNFTStage and checks if the user has a balance of the correcponding NFT in their wallet
+    modifier isEligible() {
+        if (nftAccess) {
+            if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Black"))) {
+            require(NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0, "NFTRequired");
+            _;
+        }
+        if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Gold"))) {
+            require(
+                NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
+                    NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0,
+                "NFTRequired"
+            );
+            _;
+        }
+        if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Silver"))) {
+            require(
+                NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
+                    NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0 ||
+                    NFT.balanceOf(msg.sender, SILVER_NFT_ID) > 0,
+                "NFTRequired"
+            );
+            _;
+        }
+        if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("None"))) {
+            _;
+        }
+      }
+      _;
+    }
 
    // =================== CONSTRUCTOR =================== //
 
@@ -109,7 +112,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
         marketTransition = _marketTransition;
         //getPriceContract = IGetPrice(_getPrice);
 
-        ETH = IERC20(_collateralAddress);
+        COLL = IERC20(_collateralAddress);
         misc = MISC(_miscAddress);
 
         //NFT = IERC1155(_nftAddress);
@@ -125,8 +128,9 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     // =================== OWNER FUNCTIONS =================== //
 
     function initializeCurve() external onlyOwner unitialized() {
-        curveActive = true;
-        timeoutPeriodExpiry = block.timestamp + timeoutPeriod;
+  
+        startTime = block.timestamp;
+        activateCurve();
         emit LibEvents.CurveActivated(msg.sender, block.timestamp);
     }
     
@@ -145,7 +149,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
     //     emit LibEvents.CurvePaused(msg.sender, block.timestamp);
     // }
     
-    function activateCurve() external onlyOwner {
+    function activateCurve() public onlyOwner {
         curveActive = true;
         timeoutPeriodExpiry = startTime + timeoutPeriod;
         emit LibEvents.CurveActivated(msg.sender, block.timestamp);
@@ -179,3 +183,5 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
 
     }
 }
+
+
