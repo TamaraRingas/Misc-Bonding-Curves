@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-/*                     ___                           
-  ___   ___   ___     / __\ _   _  _ __ __   __  ___ 
- / __| / _ \ / __|   / /   | | | || '__|\ \ / / / _ \
-| (__ | (_) |\__ \  / /___ | |_| || |    \ V / |  __/
- \___| \___/ |___/  \____/  \__,_||_|     \_/   \___|
+/*    _            ___                           
+ ___ (_) _ __     / __\ _   _  _ __ __   __  ___ 
+/ __|| || '_ \   / /   | | | || '__|\ \ / / / _ \
+\__ \| || | | | / /___ | |_| || |    \ V / |  __/
+|___/|_||_| |_| \____/  \__,_||_|     \_/   \___|
 ****************************************************/
 
 import "./MISC.sol";
@@ -15,11 +15,11 @@ import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
 import "@trigonometry/Trigonometry.sol";
-import "../interfaces/IBondingCurveCos.sol";
+import "../interfaces/IBondingCurveSin.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract BondingCurveCos is IBondingCurveCos, Ownable {
+contract BondingCurveSin is IBondingCurveSin, Ownable {
 
   address curve;
 
