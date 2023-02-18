@@ -26,13 +26,15 @@ contract CurveFactory is ICurveFactory {
   // =================== VARIABLES =================== //
 
     IUniswapRouter2 router;
-    uint256 public curveInstance = 1;
-    uint256 public marketInstance = 1;
 
-    // Where:
+    uint256 public curveInstances = 0;
+    uint256 public marketInstances = 0;
+
+    /// @dev Where:
     /// 0 = Ln
-    /// 1 = Cos
-    /// 2 = PieceWise
+    /// 1 = Sin
+    /// 2 = Cos
+    /// 4 = PieceWise
     mapping(uint8 => address) public formulaToContract;
 
     mapping(uint256 => address) public curveIdToAddress;
