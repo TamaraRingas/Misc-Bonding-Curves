@@ -15,5 +15,8 @@ interface ICurve {
 
   function getMarketTransitionAddress() external view returns (address transition);
 
+  function buyMISC(uint256 amount) external view;
 
+  function sellMISC(uint256 amount) external;
+  
 }
