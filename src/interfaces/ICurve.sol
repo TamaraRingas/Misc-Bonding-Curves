@@ -13,5 +13,7 @@ interface ICurve {
 
   function getTokensSold() external view returns (uint256 tokensSold);
 
-  
+  function getMarketTransitionAddress() external view returns (address transition);
+
+
 }
