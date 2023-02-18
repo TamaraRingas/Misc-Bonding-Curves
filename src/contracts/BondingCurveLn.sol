@@ -39,16 +39,21 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
               
     require(_amountMISC > 0, "Please enter an amount of tokens");
 
-      int256 tokensSold = ICurve(curve).getTokensSold();
+    int amount = int256(_amountMISC);
+    int256 tokensSold = int256(ICurve(curve).getTokensSold());
 
-      int256 startPoint = tokensSold;
-      startPoint *= 1e18; // Scale, for fixed point math to work
+    int256 startPoint = tokensSold;
+    startPoint *= 1e18; // Scale, for fixed point math to work
 
-      int256 endPoint = tokensSold + _amountMISC;
-      endPoint *= 1e18; // Scale, for fixed point math to work
+    int256 endPoint = tokensSold + amount; 
+    endPoint *= 1e18; // Scale, for fixed point math to work
 
-      int256 top; // Integral of x = endPoint 
-      int256 bottom; // Integral at x = startPoint 
+    /// @notice the price is the integral between start and end points.
+    /// The integral between point A and B is integral(B) - integral(A).
+    int256 top; // Integral of x = endPoint 
+    int256 bottom; // Integral at x = startPoint 
+
+
 
   }
 }
