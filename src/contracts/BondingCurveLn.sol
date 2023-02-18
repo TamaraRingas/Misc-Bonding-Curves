@@ -26,6 +26,8 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
   // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
       curveAddress = _curveAddress;
+
+      emit CurveAddressSet(_curveAddress, address(this));
   }
 
   /// @notice Determines the price for an input amount of MISC, in COLL.
@@ -40,7 +42,7 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
               
     require(_amountMISC > 0, "Please enter an amount of tokens");
     require(_tokenDecimals == 6 || _tokenDecimals == 18, 
-            "Please enter a valid token");
+            "Invalid token");
 
     int amount = int256(_amountMISC);
     int256 tokensSold = int256(ICurve(curve).getTokensSold());

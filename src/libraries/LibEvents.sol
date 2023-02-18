@@ -14,6 +14,8 @@ library LibEvents {
     event CurveInitialized(uint256 timeout, uint256 startTime);
 
     event CurveActivated(uint256 time);
+
+    event CurveAddressSet(address curve, address priceContract);
     
     event CurvePaused(uint256 time);
 
