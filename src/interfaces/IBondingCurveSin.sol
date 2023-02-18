@@ -12,6 +12,6 @@ interface IBondingCurveSin {
 
   function setCurveAddress(address curveInstance) external;
 
-  function calculatePirceSinCurve(uint256 amountMISC) external returns (uint256 price);
-  
+  function calculatePriceSin(uint256 amountMISC, uint8 tokenDecimals) external view returns (int256 price);
+
 }
