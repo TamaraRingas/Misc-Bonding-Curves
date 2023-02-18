@@ -39,6 +39,8 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
             returns(int256 price) {
               
     require(_amountMISC > 0, "Please enter an amount of tokens");
+    require(_tokenDecimals == 6 || _tokenDecimals == 18, 
+            "Please enter a valid token");
 
     int amount = int256(_amountMISC);
     int256 tokensSold = int256(ICurve(curve).getTokensSold());

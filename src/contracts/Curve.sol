@@ -134,7 +134,7 @@ contract Curve is ICurve {
     function initializeCurve(bool _nftAccessSet) external onlyOwner unitialized {
         startTime = block.timestamp;
         timeoutPeriodExpiry = startTime + timeoutPeriod;
-        
+
         activateCurve();
 
         nftAccessSet = _nftAccessSet;
@@ -186,7 +186,7 @@ contract Curve is ICurve {
 
     // ToDo add isActive to isElibile 
     function buyMISC(uint256 amount) external isEligible isActive {
-
+      re
     }
 
     function sellMISC(uint256 amount) external isEligible isActive {
