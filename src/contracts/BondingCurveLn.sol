@@ -20,11 +20,12 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract BondingCurveLn is IBondingCurveLn, Ownable {
    
-  address curve;
+  address curveAddress;
+  ICurve curve;
 
   // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
-      curve = _curveAddress;
+      curveAddress = _curveAddress;
   }
 
   /// @notice Determines the price for an input amount of MISC, in COLL.
@@ -50,10 +51,13 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
 
     /// @notice the price is the integral between start and end points.
     /// The integral between point A and B is integral(B) - integral(A).
-    int256 top; // Integral of x = endPoint 
-    int256 bottom; // Integral at x = startPoint 
+    SD59x18 top; // Integral of x = endPoint 
+    SD59x18 bottom; // Integral at x = startPoint 
 
+    top = ln(wrap(endPoint)); 
+    bottom = ln(wrap(startPoint));
 
+    price = unwrap(top) - unwrap(bottom);
 
   }
 }
