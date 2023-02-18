@@ -19,7 +19,7 @@ import "../interfaces/IBondingCurveCos.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract BondingCurveCos is IBondingCurveCos, Ownable {
+contract BondingCurveCos is IBondingCurveCos, Ownable { 
 
   address curve;
 
@@ -33,7 +33,7 @@ contract BondingCurveCos is IBondingCurveCos, Ownable {
   /// @param _amountMISC - The amount of MISC the user wishes to recieve a quote for in COLL. 
   /// @param _tokenDecimals - The amount of decimals of the input token, 18 for ETH and 6 for USDC. 
   /// @return price - The amount of COLL (scaled) to be transferred if the input amount of MISCtokens are bought.
-  function calculatePrice(uint256 _amountMISC, uint8 _tokenDecimals) 
+  function calculatePriceCos(uint256 _amountMISC, uint8 _tokenDecimals) 
             external 
             view 
             returns(int256 price) {
