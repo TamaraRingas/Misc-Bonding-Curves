@@ -7,7 +7,7 @@ pragma solidity 0.8.17;
 | || '_ \    / /   | | | || '__|\ \ / / / _ \
 | || | | |  / /___ | |_| || |    \ V / |  __/
 |_||_| |_|  \____/  \__,_||_|     \_/   \___|
-*/
+********************************************/
 
 import "./MISC.sol";
 import "../interfaces/ICurve.sol"; 
@@ -49,6 +49,6 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
 
       int256 top; // Integral of x = endPoint 
       int256 bottom; // Integral at x = startPoint 
-      
+
   }
 }
