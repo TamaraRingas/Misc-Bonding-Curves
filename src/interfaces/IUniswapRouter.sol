@@ -15,4 +15,8 @@ interface IUniswapRouter {
     
   function setPoolFee(uint24 _fee) external;
 
+  function getTokensToMint(address _transition) external returns (int256 amount);
+
+  
+
 }
