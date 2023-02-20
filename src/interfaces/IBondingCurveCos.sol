@@ -12,6 +12,6 @@ interface IBondingCurveCos {
   
   function setCurveAddress(address curveInstance) external;
 
-  function calculatePriceCos(uint256 amountMISC, uint8 tokenDecimals) external view returns (int256 price);
+  function calculatePriceCos1(uint256 amountMISC, uint8 tokenDecimals) external view returns (int256 price);
 
 }
