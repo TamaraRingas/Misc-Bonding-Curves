@@ -27,7 +27,7 @@ contract BondingCurveLn is IBondingCurveLn, Ownable {
   function setCurveAddress(address _curveAddress) onlyOwner external {
       curveAddress = _curveAddress;
 
-      emit CurveAddressSet(_curveAddress, address(this));
+      emit LibEvents.CurveAddressSet(_curveAddress, address(this)); 
   }
 
   /// @notice Determines the price for an input amount of MISC, in COLL.
