@@ -17,6 +17,6 @@ interface IUniswapRouter {
 
   function getTokensToMint(address _transition) external returns (int256 amount);
 
-  
+  function getQuote(address _tokenIn, address _tokenOut, uint256 _amountIn) external returns(uint256 amountOut);
 
 }
