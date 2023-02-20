@@ -33,12 +33,13 @@ contract CurveFactory is ICurveFactory {
     /// @dev Where:
     /// 0 = Ln
     /// 1 = Adapted Sin 
-    ///   => Sin(x) + 
+    ///   => Sin(x + A)/B + C
+    ///   => Default = Sin(x + (3pi/2))/2 + 0.5
     /// 2 = Adapted Cos 1 
-    ///   => Cos(x)/A + B
+    ///   => Cos(x + A)/B + C
     ///   => Default = Cos(x)/2.5 + 0.5
     /// 3 = Adapted Cos 2 (Rapid Period)
-    ///   => Cos(Ax)/B + C
+    ///   => Cos(Ax + B)/C + D
     ///   => Default = Cos(3x)/2 + 0.6 
     /// 4 = PieceWise (Sigmoid Approximation)
     mapping(uint8 => address) public formulaToContract;
