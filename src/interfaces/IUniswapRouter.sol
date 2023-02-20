@@ -19,4 +19,5 @@ interface IUniswapRouter {
 
   function getQuote(address _tokenIn, address _tokenOut, uint256 _amountIn) external returns(uint256 amountOut);
 
+  function createPool(address token0, address token1, uint256 amount0, uint256 amount1) external returns(address, uint256);
 }
