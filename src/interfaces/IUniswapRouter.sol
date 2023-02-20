@@ -11,6 +11,8 @@ pragma solidity 0.8.17;
 
 interface IUniswapRouter {
 
+  function transferOwner(address _newOwner) external;
+    
   function setPoolFee(uint24 _fee) external;
 
 }
