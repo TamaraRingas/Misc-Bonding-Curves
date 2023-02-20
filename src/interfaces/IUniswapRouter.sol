@@ -10,5 +10,7 @@ pragma solidity 0.8.17;
 */
 
 interface IUniswapRouter {
-  
+
+  function setPoolFee(uint24 _fee) external;
+
 }
