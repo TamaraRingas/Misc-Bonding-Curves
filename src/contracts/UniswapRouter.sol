@@ -38,7 +38,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
 
     mapping(address => address) curveToPool;
 
-    IERC20 COLLATERAL;
+    IERC20 COLL;
     IERC20 MISC;
 
     uint24 public poolFee;
@@ -86,7 +86,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
         poolFee = 3000;
 
         MISC = IERC20(_MISC); 
-        COLLATERAL = IERC20(_COLLATERAL);
+        COLL = IERC20(_COLLATERAL);
 
         owner = msg.sender;
     }
@@ -157,7 +157,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
         )
     {
 
-        TransferHelper.safeTransferFrom(address(COLLATERAL), msg.sender, address(this), amountAdd0);
+        TransferHelper.safeTransferFrom(address(COLL), msg.sender, address(this), amountAdd0);
         TransferHelper.safeTransferFrom(address(MISC), msg.sender, address(this), amountAdd1);
 
         TransferHelper.safeApprove(address(COLLATERAL), address(manager), amountAdd0);
@@ -365,20 +365,20 @@ contract UniswapRouter is IERC721Receiver, Tick {
     }
 
     /// msg.sender must approve this contract!
-    /// @notice Swaps a fixed amount of METADEX for a maximum possible amount of USDC using the USDC/METADEX 0.3% pool by calling `exactInputSingle` in the swap router.
-    /// @dev The calling address must approve this contract to spend at least `amountIn` worth of its METADEX for this function to succeed.
-    /// @param _amountIn The exact amount of METADEX that will be swapped for USDC.
-    /// @return amountOut The amount of USDC received.
-    function swapMETADEXforUSDC(uint256 _amountIn) external isActive returns (uint256 amountOut) {
+    /// @notice Swaps a fixed amount of MISC for a maximum possible amount of COLL using the COLL/MISC 0.3% pool by calling `exactInputSingle` in the swap router.
+    /// @dev The calling address must approve this contract to spend at least `amountIn` worth of its MISC for this function to succeed.
+    /// @param _amountIn The exact amount of MISC that will be swapped for USDC.
+    /// @return amountOut The amount of COLL received.
+    function swapMISCforUSDC(uint256 _amountIn) external isActive returns (uint256 amountOut) {
         require(_amountIn > 0, "Amount must be larger than zero");
 
-        TransferHelper.safeTransferFrom(address(METADEX), msg.sender, address(this), _amountIn);
+        TransferHelper.safeTransferFrom(address(MISC), msg.sender, address(this), _amountIn);
 
-        TransferHelper.safeApprove(address(METADEX), address(swapRouter), _amountIn);
+        TransferHelper.safeApprove(address(MISC), address(swapRouter), _amountIn);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter.ExactInputSingleParams({
-            tokenIn: address(METADEX),
-            tokenOut: address(USDC),
+            tokenIn: address(MISC),
+            tokenOut: address(COLL),
             fee: poolFee,
             recipient: address(msg.sender),
             deadline: block.timestamp,
@@ -389,7 +389,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
 
         amountOut = ISwapRouter(address(swapRouter)).exactInputSingle(params);
 
-        emit TokensSwapped(address(METADEX), address(USDC), _amountIn, amountOut);
+        emit TokensSwapped(address(MISC), address(COLL), _amountIn, amountOut);
 
         return amountOut;
     }
