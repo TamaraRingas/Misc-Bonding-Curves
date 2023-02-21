@@ -342,12 +342,12 @@ contract UniswapRouter is IERC721Receiver, Tick {
     function swapCOLLATERALForMISC(uint256 _amountIn) external isActive returns (uint256 amountOut) {
         require(_amountIn > 0, "Amount must be larger than zero");
 
-        TransferHelper.safeTransferFrom(address(COLLATERAL), msg.sender, address(this), _amountIn);
+        TransferHelper.safeTransferFrom(address(COLL), msg.sender, address(this), _amountIn);
 
-        TransferHelper.safeApprove(address(COLLATERAL), address(swapRouter), _amountIn);
+        TransferHelper.safeApprove(address(COLL), address(swapRouter), _amountIn);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter.ExactInputSingleParams({
-            tokenIn: address(COLLATERAL),
+            tokenIn: address(COLL),
             tokenOut: address(MISC),
             fee: poolFee,
             recipient: address(msg.sender),
@@ -359,7 +359,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
 
         amountOut = ISwapRouter(address(swapRouter)).exactInputSingle(params);
 
-        emit TokensSwapped(address(COLLATERAL), address(MISC), _amountIn, amountOut);
+        emit TokensSwapped(address(COLL), address(MISC), _amountIn, amountOut);
 
         return amountOut;
     }
