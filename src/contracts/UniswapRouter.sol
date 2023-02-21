@@ -160,7 +160,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
         TransferHelper.safeTransferFrom(address(COLL), msg.sender, address(this), amountAdd0);
         TransferHelper.safeTransferFrom(address(MISC), msg.sender, address(this), amountAdd1);
 
-        TransferHelper.safeApprove(address(COLLATERAL), address(manager), amountAdd0);
+        TransferHelper.safeApprove(address(COLL), address(manager), amountAdd0);
         TransferHelper.safeApprove(address(MISC), address(manager), amountAdd1);
 
         INonfungiblePositionManager.IncreaseLiquidityParams memory params =
@@ -177,7 +177,7 @@ contract UniswapRouter is IERC721Receiver, Tick {
 
         if(amountAdd0 > amount0) {
             uint256 diff = amountAdd0 - amount0;
-            TransferHelper.safeTransfer(address(COLLATERAL), msg.sender, diff);
+            TransferHelper.safeTransfer(address(COLL), msg.sender, diff);
         }
 
         if(amountAdd1 > amount1) {
