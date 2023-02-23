@@ -15,6 +15,8 @@ interface IUniswapRouter {
     
   function setPoolFee(uint24 _fee) external;
 
+  function collectAllFees(uint256 tokenId) external returns (uint256 amount0, uint256 amount1);
+  
   function getTokensToMint(address _transition) external returns (int256 amount);
 
   function getQuote(address _tokenIn, address _tokenOut, uint256 _amountIn) external returns(uint256 amountOut);
