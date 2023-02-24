@@ -30,6 +30,8 @@ contract CurveFactory is ICurveFactory {
     uint32 public curveInstances = 0;
     uint32 public marketInstances = 0;
 
+    Curve curve;
+
     /// @dev Where:
     /// 0 = Ln
     /// 1 = Adapted Sin 
@@ -78,8 +80,17 @@ contract CurveFactory is ICurveFactory {
         uint8 _formula
     ) external onlyOwner returns (address[2] memory) {
         if (_collateralAddress == address(0)) revert LibErrors.ZeroAddress();
-        if (_tokenAddress == address(0)) revert LibErrors.ZeroAddress();
-        if (_interactionContractAddress == address(0)) revert LibErrors.ZeroAddress();
+        if (_miscAddress == address(0)) revert LibErrors.ZeroAddress();
+
+        curve = new Curve(
+            _collateralAddress,
+            _miscAddress,
+            _nftAddress,
+            _treasuryAddress,
+            _uniswapRouter,
+            _marketTransition,
+            formulaToContract(_formula)
+        );
 
         
     }
