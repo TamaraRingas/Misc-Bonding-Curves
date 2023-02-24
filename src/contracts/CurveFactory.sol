@@ -77,6 +77,10 @@ contract CurveFactory is ICurveFactory {
         address _marketTransition,
         uint8 _formula
     ) external onlyOwner returns (address[2] memory) {
+        if (_collateralAddress == address(0)) revert LibErrors.ZeroAddress();
+        if (_tokenAddress == address(0)) revert LibErrors.ZeroAddress();
+        if (_interactionContractAddress == address(0)) revert LibErrors.ZeroAddress();
 
+        
     }
 }
