@@ -10,21 +10,20 @@ pragma abicoder v2;
 \/ \_/ \___/   \___/  \/    \__/  \/ \_/ 
 */
 
-import "../contracts/MISC.sol";
+
 import "../contracts/Tick.sol"; 
 import "../interfaces/ICurve.sol";
 import "../interfaces/IMarketTransition.sol";
-import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
-import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol';
 import '@uniswap/v3-core/contracts/UniswapV3Factory.sol';
 import '@uniswap/v3-core/contracts/libraries/TickMath.sol';
+import "@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol";
+import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
 import '@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol';
 import '@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
-import "@uniswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol";
-import '@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol';
+import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol';
 import '@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol';
 import '@uniswap/v3-periphery/contracts/base/LiquidityManagement.sol';
-import "@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol";
+import "@uniswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol";
 
 import {console} from "forge-std/console.sol";
 
