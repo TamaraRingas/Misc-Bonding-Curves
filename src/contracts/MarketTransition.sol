@@ -9,7 +9,11 @@ pragma solidity 0.8.17;
  \/    \/ \_/ \_/ \_/\_\ \/  \__/   \____/   \/    \____/  \___/  \_\ \/  
 **********************************************************************/
 
+import "./MISC.sol";
+import "./Curve.sol";  
+import "./UniswapRouter.sol";
 import "../interfaces/IMarketTransition.sol";
+
  
 contract MarketTransition is IMarketTransition {
   
