@@ -44,7 +44,7 @@ contract CurveFactory is ICurveFactory {
     /// 4 = PieceWise (Sigmoid Approximation)
     mapping(uint8 => address) public formulaToContract;
 
-    mapping(uint256 => address) public curveIdToAddress;
+    mapping(uint32=> address) public curveIdToAddress;
 
     mapping(address => address) public curveToMarketTransition;
 
@@ -66,5 +66,17 @@ contract CurveFactory is ICurveFactory {
         returns (address)
     {
         return curveToMarketTransition[_curveAddress];
+    }
+
+    function createBondingCurve(
+        address _collateralAddress,
+        address _miscAddress,
+        address _nftAddress,
+        address _treasuryAddress,
+        address _uniswapRouter,
+        address _marketTransition,
+        uint8 _formula
+    ) external onlyOwner returns (address[2] memory) {
+
     }
 }
