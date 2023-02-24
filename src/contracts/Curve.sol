@@ -49,11 +49,6 @@ contract Curve is ICurve {
   IERC1155 nft;
 
   // =================== MODIFIERS =================== //
-
-  modifier unitialized() {
-    if (curveInitialized == true) revert LibErrors.CurveInitialized(); 
-    _;
-  }
     
   modifier isActive() {
     if (curveActive == false) revert LibErrors.CurvePaused();
@@ -131,13 +126,15 @@ contract Curve is ICurve {
 
     // =================== OWNER FUNCTIONS =================== //
 
-    function initializeCurve(bool _nftAccessSet, int256 _maxThreshold, int256 _minThreshold, uint256 _timeoutPeriod) external onlyOwner unitialized {
+    function initializeCurve(bool _nftAccessSet, int256 _maxThreshold, int256 _minThreshold, uint256 _timeoutPeriod) external onlyOwner {
+        if (curveInitialized == true) revert LibErrors.CurveInitialized();
+        
         startTime = block.timestamp;
         timeoutPeriodExpiry = startTime + _timeoutPeriod;
 
         maxThreshold = _maxThreshold;
         minThreshold = _minThreshold;
-        
+
         activateCurve();
 
         nftAccessSet = _nftAccessSet;
