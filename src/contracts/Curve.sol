@@ -184,7 +184,7 @@ contract Curve is ICurve {
 
     // =================== GENERAL FUNCTIONS =================== //
 
-    // ToDo add isActive to isElibile 
+    // ToDo add isActive to isEligible, remove isActive
     function buyMISC(uint256 amount) external isEligible isActive {
       
     }
