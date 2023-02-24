@@ -27,8 +27,8 @@ contract CurveFactory is ICurveFactory {
 
     IUniswapRouter2 router;
 
-    uint256 public curveInstances = 0;
-    uint256 public marketInstances = 0;
+    uint32 public curveInstances = 0;
+    uint32 public marketInstances = 0;
 
     /// @dev Where:
     /// 0 = Ln

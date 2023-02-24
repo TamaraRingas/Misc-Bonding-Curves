@@ -29,6 +29,8 @@ import {console} from "forge-std/console.sol";
 
 contract UniswapRouter is IERC721Receiver, Tick {
 
+    // =================== VARIABLES =================== //
+
     address private constant SWAP_ROUTER = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
 
     address pool;
@@ -60,8 +62,12 @@ contract UniswapRouter is IERC721Receiver, Tick {
     /// @dev deposits[tokenId] => Deposit
     mapping(uint256 => Deposit) public deposits;
 
+    // =================== EVENTS =================== //
+
     event TokensSwapped(address tokenIn, address tokenOut, uint256 amountIn, uint256 amountOut);
     event OwnershipTransfer(address oldOwner, address newOwner);
+
+    // =================== MODIFIERS =================== //
 
     modifier isActive() {
         require(poolActive, "Liquidity Pool is Paused");
@@ -73,6 +79,8 @@ contract UniswapRouter is IERC721Receiver, Tick {
         require(msg.sender == owner, "Caller is not the owner");
         _;
     }
+
+    // =================== CONSTRUCTOR =================== //
 
     constructor(
         INonfungiblePositionManager _nonfungiblePositionManager,
@@ -88,6 +96,8 @@ contract UniswapRouter is IERC721Receiver, Tick {
 
         owner = msg.sender;
     }
+
+    // =================== OWNER =================== //
 
     function transferOwner(address _newOwner) public onlyOwner {
         address oldOwner = owner;
@@ -107,6 +117,8 @@ contract UniswapRouter is IERC721Receiver, Tick {
     function activatePool() external onlyOwner {
         poolActive = true;
     }
+
+    // =================== GENERAL =================== //
 
     function getTokensToMint(address _transition) internal returns (int256 amount) {
         IMarketTransition transition = IMarketTransition(_transition);
