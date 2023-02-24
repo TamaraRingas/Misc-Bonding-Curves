@@ -128,7 +128,7 @@ contract Curve is ICurve {
 
     function initializeCurve(bool _nftAccessSet, int256 _maxThreshold, int256 _minThreshold, uint256 _timeoutPeriod) external onlyOwner {
         if (curveInitialized == true) revert LibErrors.CurveInitialized();
-        
+
         startTime = block.timestamp;
         timeoutPeriodExpiry = startTime + _timeoutPeriod;
 
@@ -142,7 +142,7 @@ contract Curve is ICurve {
         emit LibEvents.CurveInitialized(timeoutPeriodExpiry, startTime);
     }
     
-    function pauseCurve() external {
+    function pauseCurve() public {
         marketTransition = curveFactory.getMarketAddress(
             address(this)
         );
