@@ -4,7 +4,6 @@ pragma solidity 0.8.17;
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol"; 
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 /*                       _____         _                 
@@ -17,7 +16,6 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 contract MISC is
     ERC20,
     ERC20Burnable,
-    ERC20Capped,
     Pausable,
     AccessControl
 {
@@ -26,7 +24,6 @@ contract MISC is
 
     constructor()
         ERC20("MISC", "MISC")
-        ERC20Capped(1000000000 * (10**uint256(18)))
     {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
