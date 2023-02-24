@@ -94,6 +94,20 @@ contract CurveFactory is ICurveFactory {
             formulaToContract(_formula)
         );
 
+        curve.transferOwnership(msg.sender);
 
+        curveIdToAddress[curveInstance] = address(curve);
+
+        emit CurveInstanceCreated(curveInstance, address(newCurve));
+
+        ++curveInstance;
+
+        MarketTransition transition = new MarketTransition(
+            address(curve),
+            address(router),
+            _collateralAddress,
+            _miscAddress,
+            formulaToContract(_formula)
+        );
     }
 }
