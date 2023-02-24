@@ -16,10 +16,10 @@ import "../interfaces/ICurve.sol";
 import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
-import "../interfaces/IMockERC1155.sol";
 import "../interfaces/IBondingCurveCos.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
 contract Curve is ICurve {
 
@@ -46,7 +46,7 @@ contract Curve is ICurve {
 
   IERC20 COLL;
   MISC misc;
-  NFT nft;
+  IERC1155 nft;
 
   // =================== MODIFIERS =================== //
 
@@ -58,34 +58,34 @@ contract Curve is ICurve {
   modifier isActive() {
     if (curveActive == false) revert LibErrors.CurvePaused();
     _;
-  }
+  } 
 
   /// @notice Checks if a user is whitelisted for the current sale round
-  /// @dev Gets the currentNFTStage and checks if the user has a balance of the correcponding NFT in their wallet
+  /// @dev Gets the currentnftStage and checks if the user has a balance of the correcponding nft in their wallet
   modifier isEligible() {
       if (nftAccessSet) {
-          if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Black"))) {
-          require(NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0, "NFTRequired");
+          if (keccak256(bytes(currentnftStage)) == keccak256(bytes("Black"))) {
+          require(nft.balanceOf(msg.sender, BLACK_nft_ID) > 0, "nftRequired");
           _;
       }
-      if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Gold"))) {
+      if (keccak256(bytes(currentnftStage)) == keccak256(bytes("Gold"))) {
           require(
-              NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
-                  NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0,
-              "NFTRequired"
+              nft.balanceOf(msg.sender, BLACK_nft_ID) > 0 ||
+                  nft.balanceOf(msg.sender, GOLD_nft_ID) > 0,
+              "nftRequired"
           );
           _;
       }
-      if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("Silver"))) {
+      if (keccak256(bytes(currentnftStage)) == keccak256(bytes("Silver"))) {
           require(
-              NFT.balanceOf(msg.sender, BLACK_NFT_ID) > 0 ||
-                  NFT.balanceOf(msg.sender, GOLD_NFT_ID) > 0 ||
-                  NFT.balanceOf(msg.sender, SILVER_NFT_ID) > 0,
-              "NFTRequired"
+              nft.balanceOf(msg.sender, BLACK_nft_ID) > 0 ||
+                  nft.balanceOf(msg.sender, GOLD_nft_ID) > 0 ||
+                  nft.balanceOf(msg.sender, SILVER_nft_ID) > 0,
+              "nftRequired"
           );
           _;
       }
-      if (keccak256(bytes(currentNFTStage)) == keccak256(bytes("None"))) {
+      if (keccak256(bytes(currentnftStage)) == keccak256(bytes("None"))) {
           _;
       }
     }
@@ -104,9 +104,9 @@ contract Curve is ICurve {
         address _priceCurve
     ) {
 
-        maxThreshold = 20000000; // ToDo set this in initialize function
-        minThreshold = 5000000; // ToDo set this in initialize function
-        timeoutPeriod = 150 days;// ToDo set this in initialize function
+        //maxThreshold = 20000000; // ToDo set this in initialize function
+        //minThreshold = 5000000; // ToDo set this in initialize function
+        //timeoutPeriod = 150 days;// ToDo set this in initialize function
 
         tokensSold = 0;
 
@@ -119,22 +119,25 @@ contract Curve is ICurve {
         COLL = IERC20(_collateralAddress);
         misc = MISC(_miscAddress);
 
-        NFT = IERC1155(_nftAddress);
+        nft = IERC1155(_nftAddress);
 
         curveActive = false; // ToDo switch to uint8
         transitionConditionsMet = false; // ToDo switch to uint8
         transitioned = false; // ToDo switch to uint8
 
-        //nftStage = NFTStage(true, false, false, false);
-        //currentNFTStage = "Black";
+        //nftStage = nftStage(true, false, false, false);
+        //currentnftStage = "Black";
     }
 
     // =================== OWNER FUNCTIONS =================== //
 
-    function initializeCurve(bool _nftAccessSet) external onlyOwner unitialized {
+    function initializeCurve(bool _nftAccessSet, int256 _maxThreshold, int256 _minThreshold, uint256 _timeoutPeriod) external onlyOwner unitialized {
         startTime = block.timestamp;
-        timeoutPeriodExpiry = startTime + timeoutPeriod;
+        timeoutPeriodExpiry = startTime + _timeoutPeriod;
 
+        maxThreshold = _maxThreshold;
+        minThreshold = _minThreshold;
+        
         activateCurve();
 
         nftAccessSet = _nftAccessSet;
@@ -164,13 +167,12 @@ contract Curve is ICurve {
 
     // =================== VIEW FUNCTIONS =================== //
 
-    // function getFee(int256 _price) public pure returns (int256) {
-    //     int256 fee = PRBMathSD59x18.mul(
-    //         PRBMathSD59x18.div(5 * 1e18, 100e18),
-    //         _price
-    //     );
-    //     return fee;
-    // }
+    function getFee(int256 _price, int256 _percentFee) public pure returns (int256 fee) {
+        int256 fee = PRBMathSD59x18.mul(
+            PRBMathSD59x18.div(_percentFee * 1e18, 100e18),
+            _price
+        );
+    }
 
     function getTokensSold() external view returns (uint256 tokensSold) {
       return tokensSold;
