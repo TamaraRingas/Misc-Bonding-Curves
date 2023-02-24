@@ -70,6 +70,8 @@ contract CurveFactory is ICurveFactory {
         return curveToMarketTransition[_curveAddress];
     }
 
+    // =================== GENERAL =================== //
+
     function createBondingCurve(
         address _collateralAddress,
         address _miscAddress,
@@ -92,6 +94,6 @@ contract CurveFactory is ICurveFactory {
             formulaToContract(_formula)
         );
 
-        
+
     }
 }
