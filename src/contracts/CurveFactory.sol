@@ -109,5 +109,13 @@ contract CurveFactory is ICurveFactory {
             _miscAddress,
             formulaToContract(_formula)
         );
+
+        curveToMarketTransition[address(curve)] = address(transition);
+
+        emit MarketInstanceCreated(marketInstance, address(transition));
+
+        ++marketInstance;
+
+        return [address(curve), address(transition)];
     }
 }
