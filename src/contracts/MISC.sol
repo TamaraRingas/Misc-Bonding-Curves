@@ -53,12 +53,12 @@ contract MISC is
 
     function _mint(address account, uint256 amount)
         internal
-        override(ERC20, ERC20Capped)
+        override(ERC20)
     {
-        require(
-            ERC20.totalSupply() + amount <= cap(),
-            "ERC20Capped: cap exceeded"
-        );
+        // require(
+        //     ERC20.totalSupply() + amount <= cap(),
+        //     "ERC20Capped: cap exceeded"
+        // );
         super._mint(account, amount);
     }
 
