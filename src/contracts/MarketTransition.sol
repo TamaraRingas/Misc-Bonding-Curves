@@ -10,7 +10,11 @@ pragma solidity 0.8.17;
 **********************************************************************/
 
 import "./MISC.sol";
-import "./Curve.sol";  
+import "./Curve.sol"; 
+import "./CosFormula.sol";
+import "./LnFormula.sol";
+import "./SinFormula.sol";
+import "./PiecewiseFormula.sol";
 import "./UniswapRouter.sol";
 import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
