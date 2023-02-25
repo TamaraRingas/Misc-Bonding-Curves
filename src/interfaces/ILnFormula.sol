@@ -9,7 +9,7 @@ pragma solidity 0.8.17;
 |_||_| |_|  \____/  \__,_||_|     \_/   \___|
 ********************************************/
 
-interface IBondingCurveLn {
+interface ILnFormula {
   
   function setCurveAddress(address curveInstance) external;
 
