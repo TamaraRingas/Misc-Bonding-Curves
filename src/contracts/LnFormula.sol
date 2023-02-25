@@ -13,11 +13,11 @@ import "../interfaces/ICurve.sol";
 import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
-import "../interfaces/ILnFormula.sol";
+import "../interfaces/ILnFormula.sol"; 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract LnFormula is IBondingCurveLn, Ownable {
+contract LnFormula is ILnFormula, Ownable { 
    
   address curveAddress;
   ICurve curve;
