@@ -43,7 +43,7 @@ contract CurveFactory is ICurveFactory {
     /// 3 = Adapted Cos 2 (Rapid Period)
     ///   => Cos(Ax + B)/C + D
     ///   => Default = Cos(3x)/2 + 0.6 
-    /// 4 = PieceWise (Sigmoid Approximation)
+    /// 4 = PieceWise (Straight Line)
     mapping(uint8 => address) public formulaToContract;
 
     mapping(uint32=> address) public curveIdToAddress;
