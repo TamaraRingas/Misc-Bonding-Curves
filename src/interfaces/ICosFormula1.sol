@@ -8,7 +8,7 @@ pragma solidity 0.8.17;
  \___| \___/ |___/  \____/  \__,_||_|     \_/   \___|
 ****************************************************/
 
-interface IBondingCurveCos {
+interface ICosFormula1 {
   
   function setCurveAddress(address curveInstance) external;
 
