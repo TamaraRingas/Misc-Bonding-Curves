@@ -11,7 +11,7 @@ pragma solidity 0.8.17;
 
 import "./MISC.sol";
 import "./Curve.sol"; 
-import "./CosFormula.sol";
+import "./CosFormula1.sol";
 import "./LnFormula.sol";
 import "./SinFormula.sol";
 import "./PiecewiseFormula.sol";
