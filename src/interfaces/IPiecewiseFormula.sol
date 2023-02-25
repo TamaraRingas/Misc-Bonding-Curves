@@ -8,7 +8,7 @@ pragma solidity 0.8.17;
 \/     |_| \___| \___| \___|         \_/\_/  |_||___/ \___|
 *********************************************************/
 
-interface IBondingCurvePiecewise {
+interface IPiecewiseFormula {
 
   function setCurveAddress(address curveInstance) external;
 
