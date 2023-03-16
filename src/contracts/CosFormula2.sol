@@ -31,7 +31,7 @@ contract CosFormula2 is ICosFormula2, Ownable {
     factory = _factory;
     curve = _curve;
   }
-  
+
   // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
       curve = _curveAddress;
@@ -46,7 +46,8 @@ contract CosFormula2 is ICosFormula2, Ownable {
             external 
             view 
             returns(int256 price) {
-
+    require(_amountMISC > 0, "Please enter an amount of tokens");
+    require(_tokenDecimals == 6 || _tokenDecimals == 18, "Invalid token");
   }
 
 }
