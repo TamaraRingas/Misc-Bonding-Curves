@@ -15,6 +15,6 @@ import "../libraries/LibErrors.sol";
 import "../libraries/LibEvents.sol";
 import "@prb-math/sd59x18/Math.sol";
 import "@trigonometry/Trigonometry.sol";
-import "../interfaces/ICosFormula1.sol"; 
+import "../interfaces/ICosFormula2.sol"; 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
