@@ -18,3 +18,14 @@ import "@trigonometry/Trigonometry.sol";
 import "../interfaces/ICosFormula2.sol"; 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+contract CosFormula1 is ICosFormula1, Ownable { 
+
+  address curve;
+
+  // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
+  function setCurveAddress(address _curveAddress) onlyOwner external {
+      curve = _curveAddress;
+  }
+
+}
