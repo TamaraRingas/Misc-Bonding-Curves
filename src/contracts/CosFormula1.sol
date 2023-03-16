@@ -37,7 +37,7 @@ contract CosFormula1 is ICosFormula1, Ownable {
             external 
             view 
             returns(int256 price) {
-
+              require(_amountMISC > 0, "Please enter an amount of tokens");
   }
 
     
