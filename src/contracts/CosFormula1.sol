@@ -54,6 +54,11 @@ contract CosFormula1 is ICosFormula1, Ownable {
     SD59x18 top; // Integral of x = endPoint 
     SD59x18 bottom; // Integral at x = startPoint 
 
+    top = cos(wrap(endPoint));
+    bottom = cos(wrap(startPoint));
+
+    
+
   }
 
     
