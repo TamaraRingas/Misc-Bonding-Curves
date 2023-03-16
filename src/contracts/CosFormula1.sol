@@ -42,7 +42,18 @@ contract CosFormula1 is ICosFormula1, Ownable {
 
     int256 amount = int256(_amountMISC);
     int256 tokensSold = int256(ICurve(curve).getTokensSold());
-    
+
+    int256 startPoint = tokensSold;
+    startPoint *= 1e18; // Scale, for fixed point math to work
+
+    int256 endPoint = tokensSold + amount; 
+    endPoint *= 1e18; // Scale, for fixed point math to work
+
+    /// @notice the price is the integral between start and end points.
+    /// The integral between point A and B is integral(B) - integral(A).
+    SD59x18 top; // Integral of x = endPoint 
+    SD59x18 bottom; // Integral at x = startPoint 
+
   }
 
     
