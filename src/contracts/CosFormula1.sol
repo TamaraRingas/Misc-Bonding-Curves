@@ -57,7 +57,7 @@ contract CosFormula1 is ICosFormula1, Ownable {
     top = cos(wrap(endPoint));
     bottom = cos(wrap(startPoint));
 
-    
+    price = unwrap(top) - unwrap(bottom);
 
   }
 
