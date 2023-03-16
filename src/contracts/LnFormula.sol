@@ -22,7 +22,7 @@ contract LnFormula is ILnFormula, Ownable {
   address curveAddress;
   ICurve curve;
 
-  // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
+  // ToDo change from Owner calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
       curveAddress = _curveAddress;
 
