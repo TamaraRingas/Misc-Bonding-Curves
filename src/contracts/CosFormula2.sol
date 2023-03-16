@@ -21,8 +21,17 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract CosFormula2 is ICosFormula2, Ownable { 
 
+  address factory;
   address curve;
 
+  constructor(
+    address _factory,
+    address _curve
+  ) {
+    factory = _factory;
+    curve = _curve;
+  }
+  
   // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
       curve = _curveAddress;
