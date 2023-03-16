@@ -19,7 +19,7 @@ import "../interfaces/ICosFormula2.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract CosFormula1 is ICosFormula1, Ownable { 
+contract CosFormula2 is ICosFormula1, Ownable { 
 
   address curve;
 
