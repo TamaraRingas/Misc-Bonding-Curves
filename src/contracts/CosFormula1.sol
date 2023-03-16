@@ -37,11 +37,12 @@ contract CosFormula1 is ICosFormula1, Ownable {
             external 
             view 
             returns(int256 price) {
-              require(_amountMISC > 0, "Please enter an amount of tokens");
-              require(_tokenDecimals == 6 || _tokenDecimals == 18, 
-            "Invalid token");
+    require(_amountMISC > 0, "Please enter an amount of tokens");
+    require(_tokenDecimals == 6 || _tokenDecimals == 18, "Invalid token");
 
-              
+    int256 amount = int256(_amountMISC);
+    int256 tokensSold = int256(ICurve(curve).getTokensSold());
+    
   }
 
     
