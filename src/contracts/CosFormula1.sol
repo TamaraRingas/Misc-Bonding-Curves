@@ -20,7 +20,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /// @notice The formula for this curve is cos(x + pi)/2 + 0.6
-/// @notice This curve oscillates between a price of 0 & 1
+/// @notice This curve oscillates between a price of 0.1 & 1.1
 contract CosFormula1 is ICosFormula1, Ownable { 
 
   address curve;
