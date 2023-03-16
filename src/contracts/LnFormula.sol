@@ -43,7 +43,7 @@ contract LnFormula is ILnFormula, Ownable {
     require(_tokenDecimals == 6 || _tokenDecimals == 18, 
             "Invalid token");
 
-    int amount = int256(_amountMISC);
+    int256 amount = int256(_amountMISC);
     int256 tokensSold = int256(ICurve(curve).getTokensSold());
 
     int256 startPoint = tokensSold;
