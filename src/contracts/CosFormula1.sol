@@ -32,6 +32,7 @@ contract CosFormula1 is ICosFormula1, Ownable {
 
   /// @notice Determines the price for an input amount of MISC, in COLL.
   /// @dev The price is calculated as the integral between the endPoint(The amount of tokens sold after the user has bought the input amount) and the startPoint(the amount of tokens bought before the quote was requested) along the shifted cos curve.
+  /// The integral of cos(x) is sin(x)
   /// @param _amountMISC - The amount of MISC the user wishes to recieve a quote for in COLL. 
   /// @param _tokenDecimals - The amount of decimals of the input token, 18 for ETH and 6 for USDC. 
   /// @return price - The amount of COLL (scaled) to be transferred if the input amount of MISCtokens are bought.
@@ -56,8 +57,8 @@ contract CosFormula1 is ICosFormula1, Ownable {
     SD59x18 top; // Integral of x = endPoint 
     SD59x18 bottom; // Integral at x = startPoint 
 
-    top = cos(wrap(endPoint));
-    bottom = cos(wrap(startPoint));
+    top = sin(wrap(endPoint));
+    bottom = sin(wrap(startPoint));
 
     price = unwrap(top) - unwrap(bottom);
 
