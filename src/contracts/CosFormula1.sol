@@ -62,7 +62,7 @@ contract CosFormula1 is ICosFormula1, Ownable {
     top = ((2 * sin(wrap(endPoint))) / denom) + (wrap(endPoint) / 2);
     bottom = ((2 * sin(wrap(startPoint))) / denom) + (wrap(startPoint) / 2);
 
-    price = unwrap(top) - unwrap(bottom);
+    price = unwrap(top - bottom);
 
   }
 
