@@ -30,7 +30,7 @@ contract CosFormula1 is ICosFormula1, Ownable {
       curve = _curveAddress;
   }
 
-  /// @notice Determines the price for an input amount of MISC, in COLL.
+  /// @notice Determines the price for an input amount of MISC, in COLL, along the bonding curve with the formula => Cos(x)/2.5 + 0.5
   /// @dev The price is calculated as the integral between the endPoint(The amount of tokens sold after the user has bought the input amount) and the startPoint(the amount of tokens bought before the quote was requested) along the shifted cos curve.
   /// The integral of cos(x) is sin(x)
   /// @param _amountMISC - The amount of MISC the user wishes to recieve a quote for in COLL. 
