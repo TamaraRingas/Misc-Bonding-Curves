@@ -56,8 +56,10 @@ contract CosFormula1 is ICosFormula1, Ownable {
     /// The integral between point A and B is integral(B) - integral(A).
     SD59x18 top; // Integral of x = endPoint 
     SD59x18 bottom; // Integral at x = startPoint 
+    SD59x18 denom;
 
-    top = (2 * sin(wrap(endPoint))) + (wrap(endPoint) / 2);
+    denom = wrap(1) / wrap(2);
+    top = ((2 * sin(wrap(endPoint))) / denom) + (wrap(endPoint) / 2);
     bottom = sin(wrap(startPoint));
 
     price = unwrap(top) - unwrap(bottom);
