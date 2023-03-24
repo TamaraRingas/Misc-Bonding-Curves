@@ -62,6 +62,9 @@ contract CosFormula2 is ICosFormula2, Ownable {
     /// The integral between point A and B is integral(B) - integral(A).
     SD59x18 top; // Integral of x = endPoint 
     SD59x18 bottom; // Integral at x = startPoint 
+    SD59x18 denom;
+
+    
   }
 
 }
