@@ -25,5 +25,5 @@ interface IUniswapRouter {
 
   function swapCOLLATERALForMISC(uint256 _amountIn) external returns (uint256 amountOut);
 
-  function swapMISCforUSDC(uint256 _amountIn) external isActive returns (uint256 amountOut);
+  function swapMISCforUSDC(uint256 _amountIn) external returns (uint256 amountOut);
 }
