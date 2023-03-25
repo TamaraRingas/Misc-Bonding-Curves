@@ -46,7 +46,7 @@ contract CosFormula2 is ICosFormula2, Ownable {
             external 
             view 
             returns(int256 price) {
-    require(_amountMISC > 0, "Please enter an amount of tokens");
+    require(_amountMISC > 0, "Please enter amount of tokens");
     require(_tokenDecimals == 6 || _tokenDecimals == 18, "Invalid token");
 
     int256 amount = int256(_amountMISC);
@@ -64,7 +64,7 @@ contract CosFormula2 is ICosFormula2, Ownable {
     SD59x18 bottom; // Integral at x = startPoint 
     SD59x18 denom;
 
-    
+
   }
 
 }
