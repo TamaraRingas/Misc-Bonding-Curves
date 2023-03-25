@@ -10,7 +10,7 @@ pragma solidity 0.8.17;
 */
 
 interface IUniswapRouter {
-
+  
   function transferOwner(address _newOwner) external;
     
   function setPoolFee(uint24 _fee) external;
@@ -25,5 +25,5 @@ interface IUniswapRouter {
 
   function swapCOLLATERALForMISC(uint256 _amountIn) external returns (uint256 amountOut);
 
-  function swapMISCforUSDC(uint256 _amountIn) external isActive returns (uint256 amountOut)
+  function swapMISCforUSDC(uint256 _amountIn) external isActive returns (uint256 amountOut);
 }
