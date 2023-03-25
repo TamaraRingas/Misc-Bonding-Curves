@@ -23,7 +23,7 @@ interface IUniswapRouter {
 
   function createPool(address token0, address token1, uint256 amount0, uint256 amount1) external returns(address, uint256);
 
-  function swapCOLLATERALForMISC(uint256 _amountIn) external returns (uint256 amountOut);
+  function swapCOLLForMISC(uint256 _amountIn) external returns (uint256 amountOut);
 
-  function swapMISCforUSDC(uint256 _amountIn) external returns (uint256 amountOut);
+  function swapMISCforCOLL(uint256 _amountIn) external returns (uint256 amountOut);
 }
