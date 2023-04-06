@@ -11,9 +11,10 @@ pragma abicoder v2;
 */
 
 
-import "../contracts/Tick.sol"; 
-import "../interfaces/ICurve.sol";
-import "../interfaces/IMarketTransition.sol"; 
+import './Tick.sol'; 
+import '../interfaces/ICurve.sol';
+import "../interfaces/IUniswapRouter.sol";
+import '../interfaces/IMarketTransition.sol';
 import '@uniswap/v3-core/contracts/UniswapV3Factory.sol';
 import '@uniswap/v3-core/contracts/libraries/TickMath.sol';
 import "@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol";
