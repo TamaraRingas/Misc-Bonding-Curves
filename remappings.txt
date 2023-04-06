@@ -5,3 +5,6 @@ forge-std/=lib/forge-std/src/
 @uniswap/v3-periphery=lib/v3-periphery/
 @prb-math=lib/prb-math/src/
 @trigonometry=lib/solidity-trigonometry/src/
+src/=src/
+test/=./test/
+script/=./script/
