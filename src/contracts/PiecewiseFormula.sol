@@ -11,12 +11,19 @@ pragma solidity 0.8.17;
 import "./MISC.sol";
 import "@prb-math/sd59x18/Math.sol"; 
 import "../interfaces/IPiecewiseFormula.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract PiecewiseFormula is IPiecewiseFormula, Ownable {   
+contract PiecewiseFormula is IPiecewiseFormula { 
+
+  /*//////////////////////////////////////////////////////////////
+                          STATE VARIABLES
+  //////////////////////////////////////////////////////////////*/  
 
   address curve;
+
+  /*//////////////////////////////////////////////////////////////
+                       STATE CHANGING FUNCTIONS
+  //////////////////////////////////////////////////////////////*/
 
   // ToDo change from Ownable calling this func to CurveFactory calling when creating a new curve instance with this as its price calculator
   function setCurveAddress(address _curveAddress) onlyOwner external {
