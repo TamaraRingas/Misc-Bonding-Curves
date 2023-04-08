@@ -8,7 +8,6 @@ pragma solidity 0.8.17;
 \/     \_/ \_/\____/  \/    \___/  \/ \_/  \_/ 
 ********************************************/
 
-import "./MISC.sol";
 import "./Curve.sol";  
 import "./UniswapRouter.sol";
 import "./MarketTransition.sol"; 
@@ -18,7 +17,6 @@ import "@prb-math/sd59x18/Math.sol";
 import "../interfaces/ICurveFactory.sol"; 
 import "../interfaces/IUniswapRouter.sol"; 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
 contract CurveFactory is ICurveFactory {
@@ -26,11 +24,10 @@ contract CurveFactory is ICurveFactory {
   // =================== VARIABLES =================== //
 
     IUniswapRouter2 router;
+    Curve curve;
 
     uint32 public curveInstances = 0;
     uint32 public marketInstances = 0;
-
-    Curve curve;
 
     /// @dev Where:
     /// 0 = Ln
@@ -44,7 +41,7 @@ contract CurveFactory is ICurveFactory {
     ///   => Cos(Ax + B)/C + D
     ///   => Default = Cos(3x)/2 + 0.6 
     /// 4 = PieceWise (Straight Line)
-    mapping(uint8 => address) public formulaToContract;
+    mapping(uint256 => address) public formulaToContractAddress;
 
     mapping(uint32=> address) public curveIdToAddress;
 
@@ -60,6 +57,10 @@ contract CurveFactory is ICurveFactory {
 
     function getCurveAddress(uint256 _curveId) external view returns (address) {
         return curveIdToAddress[_curveId];
+    }
+
+    function getPriceFormulaAddress(uint256 _formula) external view returns (address) {
+        return formulaToContractAddress[_formula];
     }
 
     function getMarketAddress(address _curveAddress)

@@ -27,16 +27,16 @@ contract Curve is ICurve, Ownable {
 
   int256 maxThreshold;
   int256 minThreshold;
-  int256 tokensSold;
   int256 treasuryFee;
+  int256 public tokensSold;
 
   uint256 startTime;
   uint256 timeoutPeriod;
   uint256 timeoutPeriodExpiry;
 
-  bool public curveActive; // ToDo: Change to uint8 to save space
-  bool public transitionConditionsMet; // ToDo: Change to uint8 
-  bool public transitioned; // ToDo: Change to uint8 
+  bool public curveActive;
+  bool public transitionConditionsMet; 
+  bool public transitioned; 
   bool public curveInitialized;
   bool public nftAccessSet;
 
@@ -45,19 +45,21 @@ contract Curve is ICurve, Ownable {
   address treasury;
 
   IERC20 COLL;
-  MISC misc;
+  IECR10 MISC;
   IERC1155 nft;
 
   // =================== MODIFIERS =================== //
     
-  modifier isActive() {
-    if (curveActive == false) revert LibErrors.CurvePaused();
-    _;
-  } 
+//   modifier isActive() {
+//     if (curveActive == false) revert LibErrors.CurvePaused();
+//     _;
+//   } 
 
   /// @notice Checks if a user is whitelisted for the current sale round
   /// @dev Gets the currentnftStage and checks if the user has a balance of the correcponding nft in their wallet
   modifier isEligible() {
+    if (curveActive == false) revert LibErrors.CurvePaused();
+    _;
       if (nftAccessSet) {
           if (keccak256(bytes(currentnftStage)) == keccak256(bytes("Black"))) {
           require(nft.balanceOf(msg.sender, BLACK_nft_ID) > 0, "nftRequired");
@@ -96,12 +98,8 @@ contract Curve is ICurve, Ownable {
         address _treasuryAddress,
         address _uniswapRouter,
         address _marketTransition,
-        address _priceCurve
+        uint256 _priceFormula
     ) {
-
-        //maxThreshold = 20000000; // ToDo set this in initialize function
-        //minThreshold = 5000000; // ToDo set this in initialize function
-        //timeoutPeriod = 150 days;// ToDo set this in initialize function
 
         tokensSold = 0;
 
@@ -109,10 +107,11 @@ contract Curve is ICurve, Ownable {
         uniswapRouter = _uniswapRouter;
         marketTransition = _marketTransition;
 
-        //price = IPriceCurve(_getCurve); // ToDo this must be set based on formula choice as constructor input
+        // price = IPriceCurve(_priceFormula); 
+        // ToDo this must be set based on formula choice as constructor input
 
         COLL = IERC20(_collateralAddress);
-        misc = MISC(_miscAddress);
+        MISC = IERC20(_miscAddress);
 
         nft = IERC1155(_nftAddress);
 
@@ -171,9 +170,9 @@ contract Curve is ICurve, Ownable {
         );
     }
 
-    function getTokensSold() external view returns (uint256 tokensSold) {
-      return tokensSold;
-    }
+    // function getTokensSold() external view returns (uint256 tokensSold) {
+    //   return tokensSold;
+    // }
 
     function getMarketTransitionAddress() public view
         returns (address)
@@ -185,7 +184,7 @@ contract Curve is ICurve, Ownable {
 
     // ToDo add isActive to isEligible, remove isActive
     function buyMISC(uint256 amount) external isEligible isActive {
-      
+        uint256 price = uint256();
     }
 
     function sellMISC(uint256 amount) external isEligible isActive {
