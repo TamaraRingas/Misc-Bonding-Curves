@@ -10,35 +10,22 @@ pragma solidity 0.8.17;
 
 import "@prb-math/sd59x18/Math.sol"; 
 import "../interfaces/IPiecewiseFormula.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract PiecewiseFormula is IPiecewiseFormula { 
+contract PiecewiseFormula is IPiecewiseFormula, Ownable {
 
   /*//////////////////////////////////////////////////////////////
                           STATE VARIABLES
   //////////////////////////////////////////////////////////////*/  
 
   address public curve;
-  address public curveFactory;
-
-  modifier onlyCurveFactory() {
-    require(msg.sender == curveFactory, "Only Curve Factory Can Call");
-    _;
-  }
-  
-  /*//////////////////////////////////////////////////////////////
-                            CONSRUCTOR
-  //////////////////////////////////////////////////////////////*/
-
-  constructor(address _curveFactory) {
-    curveFactory = _curveFactory;
-  }
 
   /*//////////////////////////////////////////////////////////////
                        STATE CHANGING FUNCTIONS
   //////////////////////////////////////////////////////////////*/
 
-  function setCurveAddress(address _curveAddress) onlyCurveFactory external {
+  function setCurveAddress(address _curveAddress) external onlyOwner {
       curve = _curveAddress;
   }
 
