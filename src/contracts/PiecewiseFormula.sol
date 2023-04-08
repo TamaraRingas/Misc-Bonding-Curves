@@ -10,11 +10,11 @@ pragma solidity 0.8.17;
 
 import "./MISC.sol";
 import "@prb-math/sd59x18/Math.sol"; 
-import "../interfaces/IBondingCurvePiecewise.sol";
+import "../interfaces/IPiecewiseFormula.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract PiecewiseFormula is IBondingCurvePiecewise, Ownable {   
+contract PiecewiseFormula is IPiecewiseFormula, Ownable {   
 
   address curve;
 
