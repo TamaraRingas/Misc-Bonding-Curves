@@ -8,7 +8,6 @@ pragma solidity 0.8.17;
  \___| \___/ |___/  \____/  \__,_||_|     \_/   \___|
 ****************************************************/
 
-import "./MISC.sol";
 import "./MarketTransition.sol";
 import "../interfaces/ICurve.sol"; 
 import "../libraries/LibErrors.sol";
@@ -17,7 +16,6 @@ import "@prb-math/sd59x18/Math.sol";
 import "@trigonometry/Trigonometry.sol";
 import "../interfaces/ICosFormula1.sol"; 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /// @notice The formula for this curve is cos(x + pi)/2 + 0.6
 /// @notice This curve oscillates between a price of 0.1 & 1.1
