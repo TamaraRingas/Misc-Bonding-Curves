@@ -21,6 +21,11 @@ contract PiecewiseFormula is IPiecewiseFormula {
 
   address curve;
 
+  modifier onlyCurveFactory() {
+    require(msg.sender == curveFactory, "Only Curve Factory Can Call");
+    _;
+  }
+
   /*//////////////////////////////////////////////////////////////
                        STATE CHANGING FUNCTIONS
   //////////////////////////////////////////////////////////////*/
