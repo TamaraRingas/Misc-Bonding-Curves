@@ -107,7 +107,7 @@ contract Curve is ICurve, Ownable {
         uniswapRouter = _uniswapRouter;
         marketTransition = _marketTransition;
 
-        // price = IPriceCurve(_priceFormula); 
+        // price = IPriceFormula(_priceFormula); 
         // ToDo this must be set based on formula choice as constructor input
 
         COLL = IERC20(_collateralAddress);
