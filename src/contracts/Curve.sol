@@ -98,7 +98,7 @@ contract Curve is ICurve, Ownable {
         address _treasuryAddress,
         address _uniswapRouter,
         address _marketTransition,
-        uint256 _priceFormula
+        address _priceFormulaContract
     ) {
 
         tokensSold = 0;
@@ -108,7 +108,7 @@ contract Curve is ICurve, Ownable {
         marketTransition = _marketTransition;
 
         // price = IPriceFormula(_priceFormula); 
-        // ToDo this must be set based on formula choice as constructor input
+        
 
         COLL = IERC20(_collateralAddress);
         MISC = IERC20(_miscAddress);
