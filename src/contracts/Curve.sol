@@ -25,10 +25,10 @@ contract Curve is ICurve, Ownable {
 
   // =================== VARIABLES =================== //
 
-  int256 maxThreshold;
-  int256 minThreshold;
-  int256 treasuryFee;
-  int256 public tokensSold;
+  uint256 maxThreshold;
+  uint256 minThreshold;
+  uint256 treasuryFee;
+  uint256 public tokensSold;
 
   uint256 startTime;
   uint256 timeoutPeriod;
