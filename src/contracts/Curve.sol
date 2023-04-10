@@ -59,7 +59,6 @@ contract Curve is ICurve, Ownable {
   /// @dev Gets the currentnftStage and checks if the user has a balance of the correcponding nft in their wallet
   modifier isEligible() {
     if (curveActive == false) revert LibErrors.CurvePaused();
-    _;
       if (nftAccessSet) {
           if (keccak256(bytes(currentnftStage)) == keccak256(bytes("Black"))) {
           require(nft.balanceOf(msg.sender, BLACK_nft_ID) > 0, "nftRequired");
