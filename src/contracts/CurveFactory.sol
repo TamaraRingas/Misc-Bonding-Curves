@@ -43,7 +43,7 @@ contract CurveFactory is ICurveFactory {
     /// 4 = PieceWise (Straight Line)
     mapping(uint256 => address) public formulaToContractAddress;
 
-    mapping(uint32=> address) public curveIdToAddress;
+    mapping(uint256 => address) public curveIdToAddress;
 
     mapping(address => address) public curveToMarketTransition;
 
@@ -80,7 +80,7 @@ contract CurveFactory is ICurveFactory {
         address _treasuryAddress,
         address _uniswapRouter,
         address _marketTransition,
-        uint8 _formula
+        uint256 _formula
     ) external onlyOwner returns (address[2] memory) {
         if (_collateralAddress == address(0)) revert LibErrors.ZeroAddress();
         if (_miscAddress == address(0)) revert LibErrors.ZeroAddress();
