@@ -48,6 +48,8 @@ contract Curve is ICurve, Ownable {
   IECR10 MISC;
   IERC1155 nft;
 
+  IPriceFormula priceFormula;
+
   // =================== MODIFIERS =================== //
     
 //   modifier isActive() {
