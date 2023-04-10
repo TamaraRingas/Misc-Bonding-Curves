@@ -107,7 +107,7 @@ contract Curve is ICurve, Ownable {
         uniswapRouter = _uniswapRouter;
         marketTransition = _marketTransition;
 
-        // price = IPriceFormula(_priceFormula); 
+        price = IPriceFormula(_priceFormula); 
         
 
         COLL = IERC20(_collateralAddress);
@@ -115,9 +115,9 @@ contract Curve is ICurve, Ownable {
 
         nft = IERC1155(_nftAddress);
 
-        curveActive = false; // ToDo switch to uint8
-        transitionConditionsMet = false; // ToDo switch to uint8
-        transitioned = false; // ToDo switch to uint8
+        curveActive = false; 
+        transitionConditionsMet = false; 
+        transitioned = false; 
 
         //nftStage = nftStage(true, false, false, false);
         //currentnftStage = "Black";
