@@ -171,12 +171,8 @@ contract Curve is ICurve, Ownable {
     // }
 
     function getFee(uint256 _price, uint256 _percentFee) public view returns (uint256 fee) {
-        
-    }
 
-    // function getTokensSold() external view returns (uint256 tokensSold) {
-    //   return tokensSold;
-    // }
+    }
 
     function getMarketTransitionAddress() public view
         returns (address)
