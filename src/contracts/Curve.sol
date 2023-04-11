@@ -110,7 +110,6 @@ contract Curve is ICurve, Ownable {
 
         priceFormula = IPriceFormula(_priceFormula); 
         
-
         COLL = IERC20(_collateralAddress);
         MISC = IERC20(_miscAddress);
 
