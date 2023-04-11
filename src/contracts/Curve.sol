@@ -182,12 +182,11 @@ contract Curve is ICurve, Ownable {
 
     // =================== GENERAL FUNCTIONS =================== //
 
-    // ToDo add isActive to isEligible, remove isActive
-    function buyMISC(uint256 amount) external isEligible isActive {
+    function buyMISC(uint256 amount) external isEligible {
         uint256 price = uint256();
     }
 
-    function sellMISC(uint256 amount) external isEligible isActive {
+    function sellMISC(uint256 amount) external isEligible {
 
     }
 }
