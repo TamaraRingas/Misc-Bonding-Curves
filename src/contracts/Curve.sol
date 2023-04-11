@@ -156,7 +156,7 @@ contract Curve is ICurve, Ownable {
         emit LibEvents.CurvePaused(block.timestamp);
     }
     
-    function activateCurve() public onlyOwner {
+    function activateCurve() external onlyOwner {
         curveActive = true;
         emit LibEvents.CurveActivated(block.timestamp);
     }
