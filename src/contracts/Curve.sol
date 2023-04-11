@@ -163,11 +163,15 @@ contract Curve is ICurve, Ownable {
 
     // =================== VIEW FUNCTIONS =================== //
 
-    function getFee(int256 _price, int256 _percentFee) public pure returns (int256 fee) {
-        int256 fee = PRBMathSD59x18.mul(
-            PRBMathSD59x18.div(_percentFee * 1e18, 100e18),
-            _price
-        );
+    // function getFee(int256 _price, int256 _percentFee) public pure returns (int256 fee) {
+    //     int256 fee = PRBMathSD59x18.mul(
+    //         PRBMathSD59x18.div(_percentFee * 1e18, 100e18),
+    //         _price
+    //     );
+    // }
+
+    function getFee(uint256 _price, uint256 _percentFee) public view returns (uint256 fee) {
+        
     }
 
     // function getTokensSold() external view returns (uint256 tokensSold) {
