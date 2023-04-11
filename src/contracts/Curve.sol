@@ -171,7 +171,7 @@ contract Curve is ICurve, Ownable {
     // }
 
     function getFee(uint256 _price, uint256 _percentFee) public view returns (uint256 fee) {
-
+        //fee =
     }
 
     function getMarketTransitionAddress() public view
