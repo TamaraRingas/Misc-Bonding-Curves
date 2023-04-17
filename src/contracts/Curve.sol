@@ -183,7 +183,7 @@ contract Curve is ICurve, Ownable {
     // =================== GENERAL FUNCTIONS =================== //
 
     function buyMISC(uint256 amount) external isEligible {
-        //uint256 price = uint256();
+        uint256 price;
     }
 
     function sellMISC(uint256 amount) external isEligible {
