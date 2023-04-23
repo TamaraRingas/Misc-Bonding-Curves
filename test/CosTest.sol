@@ -10,6 +10,7 @@ pragma solidity 0.8.17;
 *****************************/
 
 import "forge-std/Test.sol";
+import "../src/contracts/Curve.sol";
 import "../src/contracts/CosFormula1.sol";
 import "../src/contracts/CosFormula2.sol";
 
