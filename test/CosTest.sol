@@ -10,3 +10,7 @@ pragma solidity 0.8.17;
 *****************************/
 
 import "forge-std/Test.sol";
+
+contract CosTest is Test {
+
+}
