@@ -18,6 +18,6 @@ contract CosTest is Test {
 
   Curve curve;
   CosFormula1 cos1;
-  
+  CosFormula2 cos2;
 
 }
