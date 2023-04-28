@@ -16,4 +16,7 @@ import "../src/contracts/CosFormula2.sol";
 
 contract CosTest is Test {
 
+  Curve curve;
+  
+
 }
