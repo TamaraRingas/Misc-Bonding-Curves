@@ -20,4 +20,9 @@ contract CosTest is Test {
   CosFormula1 cos1;
   CosFormula2 cos2;
 
+  IERC20 USDC;
+  IERC20 MISC;
+
+  
+
 }
