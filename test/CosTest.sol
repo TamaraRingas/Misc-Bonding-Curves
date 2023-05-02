@@ -22,6 +22,9 @@ contract CosTest is Test {
 
   address curveAddress;
   address cos1Address;
+  address cos2Address;
+  
+  
   
 
   IERC20 USDC;
