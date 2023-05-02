@@ -36,6 +36,10 @@ contract CosTest is Test {
   //////////////////////////////////////////////////////////////*/
 
   function setUp() {
+    curve = new Curve();
+    cos1 = new CosFormula1();
+    cos2 = new CosFormula2();
+    
     USDC = new IERC20(0xe6b8a5CF854791412c1f6EFC7CAf629f5Df1c747);
 
   }
