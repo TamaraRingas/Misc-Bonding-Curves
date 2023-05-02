@@ -23,13 +23,12 @@ contract CosTest is Test {
   address curveAddress;
   address cos1Address;
   address cos2Address;
-  
-  address alice = vm.addr(2);
-  address bob = vm.addr(3)
-  
 
   IERC20 USDC;
   IERC20 MISC;
+  
+  address alice = vm.addr(2);
+  address bob = vm.addr(3);
 
   function setUp() {
 
