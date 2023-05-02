@@ -26,12 +26,12 @@ contract CosTest is Test {
 
   IERC20 USDC;
   IERC20 MISC;
-  
+
   address alice = vm.addr(2);
   address bob = vm.addr(3);
 
   function setUp() {
-
+    USDC = new IERC20(0xe6b8a5CF854791412c1f6EFC7CAf629f5Df1c747);
   }
 
 }
