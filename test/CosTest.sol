@@ -10,6 +10,9 @@ pragma solidity 0.8.17;
 *****************************/
 
 import "forge-std/Test.sol";
+import "forge-std/console.sol";
+import "forge-std/StdUtils.sol"; 
+import "forge-std/StdCheats.sol";
 import "../src/contracts/Curve.sol";
 import "../src/libraries/LibEvents.sol";
 import "../src/contracts/CosFormula1.sol";
@@ -39,7 +42,7 @@ contract CosTest is Test {
     curve = new Curve();
     cos1 = new CosFormula1();
     cos2 = new CosFormula2();
-    
+
     USDC = new IERC20(0xe6b8a5CF854791412c1f6EFC7CAf629f5Df1c747);
 
   }
