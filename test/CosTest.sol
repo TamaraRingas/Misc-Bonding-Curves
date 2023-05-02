@@ -23,6 +23,8 @@ contract CosTest is Test {
   IERC20 USDC;
   IERC20 MISC;
 
-  
+  function setUp() {
+    
+  }
 
 }
