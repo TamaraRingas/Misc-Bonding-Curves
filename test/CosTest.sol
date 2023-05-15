@@ -45,6 +45,7 @@ contract CosTest is Test {
 
     USDC = new IERC20(0xe6b8a5CF854791412c1f6EFC7CAf629f5Df1c747);
     deal(address(USDC), alice, 10000);
+    deal(address(USDC), bob, 10000);
     deal(address(USDC), address(this), 10000);
   }
 
