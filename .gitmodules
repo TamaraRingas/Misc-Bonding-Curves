@@ -11,9 +11,6 @@
 	url = https://github.com/uniswap/v3-periphery
 [submodule "/Users/admin/Desktop/Code/Projects/Misc-DeFi-1/lib/v3-periphery"]
 	branch = 0.8
-[submodule "lib/openzeppelin-contracts"]
-	path = lib/openzeppelin-contracts
-	url = https://github.com/openzeppelin/openzeppelin-contracts
 [submodule "lib/prb-math"]
 	path = lib/prb-math
 	url = https://github.com/paulrberg/prb-math
