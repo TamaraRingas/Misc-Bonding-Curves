@@ -5,7 +5,18 @@ libs = ['lib']
 
 solc_version = '0.8.17'
 
+remappings = [
+  "ds-test=lib/forge-std/lib/ds-test/src/",
+  "forge-std=lib/forge-std/src/",
+  "@openzeppelin=lib/openzeppelin-contracts/",
+  "openzeppelin=lib/openzeppelin-contracts/",
+  "@uniswap/v3-core=lib/v3-core/",
+  "@uniswap/v3-periphery=lib/v3-periphery/",
+  "@prb-math=lib/prb-math/src/",
+  "@trigonometry=lib/solidity-trigonometry/src/"
+]
 
 via_ir = false
+
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
